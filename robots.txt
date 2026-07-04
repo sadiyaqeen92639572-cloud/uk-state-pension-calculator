@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uk-state-pension-calculator.co.uk/sitemap.xml
