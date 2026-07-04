@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e4d8c"/>
+      <stop offset="100%" style="stop-color:#0f2d5a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="8" height="630" fill="#e63946"/>
+  <text x="80" y="120" font-family="Georgia, serif" font-size="28" fill="rgba(255,255,255,0.6)" letter-spacing="2">🇬🇧 UK STATE PENSION CALCULATOR</text>
+  <text x="80" y="240" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="white">How Much Will</text>
+  <text x="80" y="330" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="white">I Get?</text>
+  <text x="80" y="420" font-family="Arial, sans-serif" font-size="32" fill="rgba(255,255,255,0.8)">Enter your date of birth + NI years</text>
+  <text x="80" y="465" font-family="Arial, sans-serif" font-size="32" fill="rgba(255,255,255,0.8)">→ instant state pension estimate</text>
+  <rect x="80" y="510" width="340" height="64" rx="8" fill="#e63946"/>
+  <text x="250" y="551" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">Free · No signup · 2026</text>
+  <text x="1120" y="560" font-family="Arial, sans-serif" font-size="26" fill="rgba(255,255,255,0.5)" text-anchor="end">£230.25/wk</text>
+  <text x="1120" y="595" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.35)" text-anchor="end">state-pension-calculator.co.uk</text>
+</svg>
