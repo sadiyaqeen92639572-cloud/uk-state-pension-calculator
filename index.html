@@ -392,6 +392,51 @@
     </div>
   </div>
 
+  <h2 class="st">How This Calculator Works — Formulas &amp; Method</h2>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:28px 28px 20px;margin:0 0 40px;font-size:0.9rem;line-height:1.8;">
+    <p style="margin-bottom:16px;color:#64748b;font-size:0.82rem;text-transform:uppercase;letter-spacing:.5px;font-weight:600;">Source: DWP / HMRC 2025/26 rates · All formulas are deterministic given the inputs below</p>
+
+    <h3 style="font-size:1rem;margin:0 0 12px;">Core Constants (2025/26)</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:24px;font-size:0.88rem;">
+      <tr><th style="background:#1e4d8c;color:white;padding:8px 12px;text-align:left;">Constant</th><th style="background:#1e4d8c;color:white;padding:8px 12px;text-align:left;">Value</th><th style="background:#1e4d8c;color:white;padding:8px 12px;text-align:left;">Source</th></tr>
+      <tr><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Full new state pension</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-weight:700;">£230.25 / week</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">DWP April 2025</td></tr>
+      <tr><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">NI years required (full)</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-weight:700;">35 qualifying years</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Pensions Act 2014</td></tr>
+      <tr><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">NI years required (minimum)</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-weight:700;">10 qualifying years</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Pensions Act 2014</td></tr>
+      <tr><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Value per NI year</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-weight:700;">£230.25 ÷ 35 = £6.578 / week = £342.04 / year</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Derived</td></tr>
+      <tr><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Voluntary Class 3 NI cost</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-weight:700;">£923.00 / year (£17.75 / week)</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">HMRC 2025/26</td></tr>
+      <tr><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">Voluntary Class 2 NI cost</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;font-weight:700;">£182.00 / year (£3.50 / week)</td><td style="padding:8px 12px;border-bottom:1px solid #e2e8f0;">HMRC 2025/26 (self-employed)</td></tr>
+      <tr><td style="padding:8px 12px;">Deferral rate</td><td style="padding:8px 12px;font-weight:700;">+1% per 9 weeks = +5.78% per year</td><td style="padding:8px 12px;">DWP</td></tr>
+    </table>
+
+    <h3 style="font-size:1rem;margin:0 0 12px;">Pension Calculation Formulas</h3>
+    <div style="background:#1e3a5f;color:#e2e8f0;border-radius:8px;padding:18px 20px;font-family:'Courier New',monospace;font-size:0.83rem;line-height:2;margin-bottom:20px;">
+      <span style="color:#7dd3fc;">weekly_pension</span> = (ni_years / 35) × £230.25<br>
+      <span style="color:#7dd3fc;">annual_pension</span> = weekly_pension × 52<br>
+      <span style="color:#7dd3fc;">monthly_pension</span> = annual_pension / 12<br>
+      <br>
+      <span style="color:#86efac;">— Gap analysis —</span><br>
+      <span style="color:#7dd3fc;">ni_gap</span>          = max(0, 35 − ni_years)<br>
+      <span style="color:#7dd3fc;">weekly_shortfall</span> = ni_gap × £6.578<br>
+      <span style="color:#7dd3fc;">cost_class3</span>     = ni_gap × £923.00<br>
+      <span style="color:#7dd3fc;">cost_class2</span>     = ni_gap × £182.00  <span style="color:#94a3b8;">← self-employed only</span><br>
+      <span style="color:#7dd3fc;">roi_class3</span>      = £342.04 / £923.00 = 37.1% per year<br>
+      <span style="color:#7dd3fc;">breakeven_class3</span> = £923.00 / £342.04 = 2.70 years<br>
+      <br>
+      <span style="color:#86efac;">— Deferral —</span><br>
+      <span style="color:#7dd3fc;">deferred_weekly</span> = weekly_pension × (1 + 0.01 × defer_weeks / 9)<br>
+      <span style="color:#7dd3fc;">annual_gain</span>     = (deferred_weekly − weekly_pension) × 52<br>
+      <span style="color:#7dd3fc;">breakeven_deferral</span> = (52 × defer_weeks / 9 × weekly_pension × 0.01 × 52)⁻¹ <span style="color:#94a3b8;">≈ 17 years</span>
+    </div>
+
+    <h3 style="font-size:1rem;margin:0 0 12px;">State Pension Age (SPA) Logic</h3>
+    <div style="background:#1e3a5f;color:#e2e8f0;border-radius:8px;padding:18px 20px;font-family:'Courier New',monospace;font-size:0.83rem;line-height:2;margin-bottom:8px;">
+      if birth_date &lt; 6 Apr 1960  → SPA = 66<br>
+      if birth_date ≥ 6 Apr 1960 and &lt; 6 Apr 1977  → SPA = 67 (phased 2026–2028)<br>
+      if birth_date ≥ 6 Apr 1977  → SPA = 68 (proposed, not yet law)
+    </div>
+    <p style="font-size:0.78rem;color:#94a3b8;margin:0;">All inputs are public statutory rates. This calculator applies them deterministically — no rounding beyond pence. Verify your personal NI record at gov.uk/check-state-pension.</p>
+  </div>
+
   <h2 class="st">Frequently Asked Questions</h2>
 
   <div class="faq-item">
