@@ -262,6 +262,7 @@ for (let year = 1955; year <= 1975; year++) {
   <div class="container">
     <div class="fca-footer">This tool provides information only — not financial advice. For your official state pension forecast, visit <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>. Based on 2025/26 DWP rates.</div>
     <p>Born ${year} state pension guide · <a href="/">Main Calculator</a> · <a href="/born-${year-1}/">Born ${year-1}</a> · <a href="/born-${year+1}/">Born ${year+1}</a></p>
+    <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
 </footer>
 
