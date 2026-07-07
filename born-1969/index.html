@@ -38,7 +38,7 @@
         {
           "@type": "Question",
           "name": "How much state pension will I get if I was born in 1969?",
-          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in 1969 and have 35 qualifying National Insurance years, you will receive the full new state pension of £230.25 per week (£11973 per year) at the 2025/26 rate. With 30 NI years you would get £197.36/week, and with 20 NI years £131.57/week." }
+          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in 1969 and have 35 qualifying National Insurance years, you will receive the full new state pension of £241.30 per week (£12548 per year) at the 2026/27 rate. With 30 NI years you would get £206.83/week, and with 20 NI years £137.89/week." }
         },
         {
           "@type": "Question",
@@ -185,16 +185,16 @@
   <h2>State Pension Facts for People Born in 1969</h2>
   <p>If you were born in 1969, you fall into the <strong>state pension age 67</strong> cohort. The earliest you can claim your state pension is in <strong>2036</strong>. That means you have approximately 10 years until retirement.</p>
 
-  <p>To receive the <strong>full new state pension of £230.25 per week</strong>, you need 35 qualifying National Insurance years. If you started work at 21, by 2036 you would have accumulated 46 potential qualifying years (assuming no gaps).</p>
+  <p>To receive the <strong>full new state pension of £241.30 per week</strong>, you need 35 qualifying National Insurance years. If you started work at 21, by 2036 you would have accumulated 46 potential qualifying years (assuming no gaps).</p>
 
   <table class="data-table">
     <thead><tr><th>NI Years</th><th>Weekly Pension</th><th>Annual Pension</th><th>vs Full Pension</th></tr></thead>
     <tbody>
-      <tr><td>10 years (min)</td><td>£65.79</td><td>£3,421</td><td>29%</td></tr>
-      <tr><td>20 years</td><td>£131.57</td><td>£6,842</td><td>57%</td></tr>
-      <tr><td>25 years</td><td>£164.46</td><td>£8,552</td><td>71%</td></tr>
-      <tr><td>30 years</td><td>£197.36</td><td>£10,263</td><td>86%</td></tr>
-      <tr><td class="hl">35 years (full)</td><td class="hl">£230.25</td><td class="hl">£11,973</td><td class="hl">100%</td></tr>
+      <tr><td>10 years (min)</td><td>£68.94</td><td>£3,585</td><td>29%</td></tr>
+      <tr><td>20 years</td><td>£137.89</td><td>£7,170</td><td>57%</td></tr>
+      <tr><td>25 years</td><td>£172.36</td><td>£8,963</td><td>71%</td></tr>
+      <tr><td>30 years</td><td>£206.83</td><td>£10,755</td><td>86%</td></tr>
+      <tr><td class="hl">35 years (full)</td><td class="hl">£241.30</td><td class="hl">£12,548</td><td class="hl">100%</td></tr>
     </tbody>
   </table>
 
@@ -218,18 +218,18 @@
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">How much state pension will I get if born in 1969?</button>
-    <div class="faq-a">With 35 qualifying NI years, you will receive the full new state pension of <strong>£230.25/week</strong> (£11,973/year) at 2025/26 rates. With 30 years: £197.36/week. With 20 years: £131.57/week. You need a minimum of 10 NI years to receive any state pension.</div>
+    <div class="faq-a">With 35 qualifying NI years, you will receive the full new state pension of <strong>£241.30/week</strong> (£12,548/year) at 2026/27 rates. With 30 years: £206.83/week. With 20 years: £137.89/week. You need a minimum of 10 NI years to receive any state pension.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I boost my state pension if I was born in 1969?</button>
-    <div class="faq-a">Yes. If you have gaps in your NI record, you can pay voluntary Class 3 contributions (approximately £923 per year at 2025/26 rates) to fill them. Each year bought adds £342/year to your state pension for life — typically paying off within 2–3 years of retirement. Check your NI record at gov.uk to see which years you can fill.</div>
+    <div class="faq-a">Yes. If you have gaps in your NI record, you can pay voluntary Class 3 contributions (approximately £956.80 per year at 2026/27 rates) to fill them. Each year bought adds £358.50/year to your state pension for life — typically paying off within 2–3 years of retirement. Check your NI record at gov.uk to see which years you can fill.</div>
   </div>
 </div>
 </div>
 
 <footer>
   <div class="container">
-    <div class="fca-footer">This tool provides information only — not financial advice. For your official state pension forecast, visit <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>. Based on 2025/26 DWP rates.</div>
+    <div class="fca-footer">This tool provides information only — not financial advice. For your official state pension forecast, visit <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>. Based on 2026/27 DWP rates.</div>
     <p>Born 1969 state pension guide · <a href="/">Main Calculator</a> · <a href="/born-1968/">Born 1968</a> · <a href="/born-1970/">Born 1970</a></p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
@@ -244,11 +244,11 @@ function calculate() {
   const spa = 67;
   const retYear = 1969 + spa;
   const retDate = MONTHS[birthMonth-1] + ' ' + retYear;
-  const pension = niYears < 10 ? 0 : Math.min(niYears, 35) / 35 * 230.25;
+  const pension = niYears < 10 ? 0 : Math.min(niYears, 35) / 35 * 241.30;
   const monthly = pension * 52 / 12;
   const annual = pension * 52;
   document.getElementById('r-weekly').textContent = niYears < 10 ? '£0.00/week' : '£' + pension.toFixed(2) + '/week';
-  document.getElementById('r-sub').textContent = niYears < 10 ? 'Need at least 10 NI years' : 'Based on ' + niYears + ' qualifying NI years · 2025/26 rates';
+  document.getElementById('r-sub').textContent = niYears < 10 ? 'Need at least 10 NI years' : 'Based on ' + niYears + ' qualifying NI years · 2026/27 rates';
   document.getElementById('r-monthly').textContent = '£' + monthly.toFixed(2);
   document.getElementById('r-annual').textContent = '£' + Math.round(annual).toLocaleString();
   document.getElementById('r-retdate').textContent = retDate;

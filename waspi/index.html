@@ -52,12 +52,12 @@
         {
           "@type": "Question",
           "name": "What can WASPI women do now to maximise their state pension?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Regardless of the WASPI campaign outcome, practical steps include: (1) Check your NI record at gov.uk/check-state-pension and ensure all credits are recorded. (2) Fill any NI gaps with voluntary contributions — £923/gap adds £342/year for life. (3) Consider deferring your state pension if you are still working and do not need the income immediately. (4) Check any private or workplace pension entitlements from the working years. (5) Explore Pension Credit if your income is low." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Regardless of the WASPI campaign outcome, practical steps include: (1) Check your NI record at gov.uk/check-state-pension and ensure all credits are recorded. (2) Fill any NI gaps with voluntary contributions — £956.80/gap adds £358.50/year for life. (3) Consider deferring your state pension if you are still working and do not need the income immediately. (4) Check any private or workplace pension entitlements from the working years. (5) Explore Pension Credit if your income is low." }
         },
         {
           "@type": "Question",
           "name": "What is Pension Credit and do WASPI women qualify?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Pension Credit tops up weekly income to a minimum level (£218.15 for single people in 2025/26). Women who had to wait longer for their state pension due to the age rise may have had lower incomes in the interim. If your total retirement income is below the threshold, you may qualify for Pension Credit — check at gov.uk/pension-credit or call 0800 99 1234." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Pension Credit tops up weekly income to a minimum level (£218.15 for single people in 2026/27). Women who had to wait longer for their state pension due to the age rise may have had lower incomes in the interim. If your total retirement income is below the threshold, you may qualify for Pension Credit — check at gov.uk/pension-credit or call 0800 99 1234." }
         }
       ]
     },
@@ -224,7 +224,7 @@
     <thead><tr><th>Action</th><th>Why</th><th>Where</th></tr></thead>
     <tbody>
       <tr><td>✅ Check NI record — confirm all credits applied</td><td>Missing credits = lost pension</td><td>gov.uk/check-state-pension</td></tr>
-      <tr><td>✅ Fill NI gaps if below 35 years</td><td>£923/gap → +£342/yr for life</td><td><a href="/ni-gaps/">NI gaps calculator</a></td></tr>
+      <tr><td>✅ Fill NI gaps if below 35 years</td><td>£956.80/gap → +£358.50/yr for life</td><td><a href="/ni-gaps/">NI gaps calculator</a></td></tr>
       <tr><td>✅ Check Pension Credit eligibility</td><td>Low income? Top-up available</td><td>gov.uk/pension-credit</td></tr>
       <tr><td>✅ Register with WASPI campaign</td><td>Stay updated on compensation</td><td>waspi.co.uk</td></tr>
       <tr><td>✅ Locate workplace pensions from working years</td><td>May have forgotten pots</td><td>PensionBee / gov pension tracing</td></tr>
@@ -263,11 +263,11 @@
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What can I do now to maximise my state pension?</button>
-    <div class="faq-a">Check your NI record for missing credits, fill NI gaps (£923/gap → £342/year for life), check Pension Credit eligibility if income is low, and trace any forgotten workplace pensions. These practical steps are independent of the WASPI compensation campaign.</div>
+    <div class="faq-a">Check your NI record for missing credits, fill NI gaps (£956.80/gap → £358.50/year for life), check Pension Credit eligibility if income is low, and trace any forgotten workplace pensions. These practical steps are independent of the WASPI compensation campaign.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What is Pension Credit and do I qualify?</button>
-    <div class="faq-a">Pension Credit tops up weekly income to a minimum of £218.15 (single, 2025/26). If your total income from state pension, private pensions, and savings is below this, you may qualify. Many eligible women do not claim it — check at gov.uk/pension-credit or call 0800 99 1234.</div>
+    <div class="faq-a">Pension Credit tops up weekly income to a minimum of £218.15 (single, 2026/27). If your total income from state pension, private pensions, and savings is below this, you may qualify. Many eligible women do not claim it — check at gov.uk/pension-credit or call 0800 99 1234.</div>
   </div>
 </div>
 </div>
@@ -281,7 +281,7 @@
 </footer>
 
 <script>
-const FULL = 230.25; const MAX = 35;
+const FULL = 241.30; const MAX = 35;
 // Approximate SPA by birth year for 1950s women
 const SPA_MAP = { 1950:60, 1951:61, 1952:62, 1953:63, 1954:64, 1955:65, 1956:65, 1957:65, 1958:65, 1959:65, 1960:66 };
 
@@ -294,7 +294,7 @@ function check() {
   const pension = Math.min(ni, MAX) / MAX * FULL;
 
   document.getElementById('h-pension').textContent = '£' + pension.toFixed(2) + '/week';
-  document.getElementById('h-sub').textContent = `Based on ${Math.min(ni,MAX)} NI qualifying years · Full pension: £230.25/week`;
+  document.getElementById('h-sub').textContent = `Based on ${Math.min(ni,MAX)} NI qualifying years · Full pension: £241.30/week`;
 
   const box = document.getElementById('waspi-status');
   if (by >= 1950 && by <= 1960) {

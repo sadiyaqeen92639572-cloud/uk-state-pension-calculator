@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const FULL_PENSION_WEEKLY = 230.25;
+const FULL_PENSION_WEEKLY = 241.30;
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 function getSPA(year) {
@@ -69,7 +69,7 @@ for (let year = 1955; year <= 1975; year++) {
         {
           "@type": "Question",
           "name": "How much state pension will I get if I was born in ${year}?",
-          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in ${year} and have 35 qualifying National Insurance years, you will receive the full new state pension of £${pension35} per week (£${(parseFloat(pension35)*52).toFixed(0)} per year) at the 2025/26 rate. With 30 NI years you would get £${pension30}/week, and with 20 NI years £${pension20}/week." }
+          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in ${year} and have 35 qualifying National Insurance years, you will receive the full new state pension of £${pension35} per week (£${(parseFloat(pension35)*52).toFixed(0)} per year) at the 2026/27 rate. With 30 NI years you would get £${pension30}/week, and with 20 NI years £${pension20}/week." }
         },
         {
           "@type": "Question",
@@ -249,18 +249,18 @@ for (let year = 1955; year <= 1975; year++) {
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">How much state pension will I get if born in ${year}?</button>
-    <div class="faq-a">With 35 qualifying NI years, you will receive the full new state pension of <strong>£${pension35}/week</strong> (£${Math.round(parseFloat(pension35)*52).toLocaleString()}/year) at 2025/26 rates. With 30 years: £${calcPension(30).toFixed(2)}/week. With 20 years: £${calcPension(20).toFixed(2)}/week. You need a minimum of 10 NI years to receive any state pension.</div>
+    <div class="faq-a">With 35 qualifying NI years, you will receive the full new state pension of <strong>£${pension35}/week</strong> (£${Math.round(parseFloat(pension35)*52).toLocaleString()}/year) at 2026/27 rates. With 30 years: £${calcPension(30).toFixed(2)}/week. With 20 years: £${calcPension(20).toFixed(2)}/week. You need a minimum of 10 NI years to receive any state pension.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I boost my state pension if I was born in ${year}?</button>
-    <div class="faq-a">Yes. If you have gaps in your NI record, you can pay voluntary Class 3 contributions (approximately £923 per year at 2025/26 rates) to fill them. Each year bought adds £342/year to your state pension for life — typically paying off within 2–3 years of retirement. Check your NI record at gov.uk to see which years you can fill.</div>
+    <div class="faq-a">Yes. If you have gaps in your NI record, you can pay voluntary Class 3 contributions (approximately £956.80 per year at 2026/27 rates) to fill them. Each year bought adds £358.50/year to your state pension for life — typically paying off within 2–3 years of retirement. Check your NI record at gov.uk to see which years you can fill.</div>
   </div>
 </div>
 </div>
 
 <footer>
   <div class="container">
-    <div class="fca-footer">This tool provides information only — not financial advice. For your official state pension forecast, visit <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>. Based on 2025/26 DWP rates.</div>
+    <div class="fca-footer">This tool provides information only — not financial advice. For your official state pension forecast, visit <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>. Based on 2026/27 DWP rates.</div>
     <p>Born ${year} state pension guide · <a href="/">Main Calculator</a> · <a href="/born-${year-1}/">Born ${year-1}</a> · <a href="/born-${year+1}/">Born ${year+1}</a></p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
@@ -275,11 +275,11 @@ function calculate() {
   const spa = ${spa};
   const retYear = ${year} + spa;
   const retDate = MONTHS[birthMonth-1] + ' ' + retYear;
-  const pension = niYears < 10 ? 0 : Math.min(niYears, 35) / 35 * 230.25;
+  const pension = niYears < 10 ? 0 : Math.min(niYears, 35) / 35 * 241.30;
   const monthly = pension * 52 / 12;
   const annual = pension * 52;
   document.getElementById('r-weekly').textContent = niYears < 10 ? '£0.00/week' : '£' + pension.toFixed(2) + '/week';
-  document.getElementById('r-sub').textContent = niYears < 10 ? 'Need at least 10 NI years' : 'Based on ' + niYears + ' qualifying NI years · 2025/26 rates';
+  document.getElementById('r-sub').textContent = niYears < 10 ? 'Need at least 10 NI years' : 'Based on ' + niYears + ' qualifying NI years · 2026/27 rates';
   document.getElementById('r-monthly').textContent = '£' + monthly.toFixed(2);
   document.getElementById('r-annual').textContent = '£' + Math.round(annual).toLocaleString();
   document.getElementById('r-retdate').textContent = retDate;

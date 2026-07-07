@@ -59,7 +59,7 @@
         {
           "@type": "Question",
           "name": "How can divorced women increase their state pension?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The most effective options are: (1) Fill NI gaps with voluntary contributions — each gap costs £923.00 and adds £342/year for life. (2) If still working, continue accumulating qualifying NI years. (3) Check you received all NI credits you were entitled to during the marriage (child benefit, carer's allowance). (4) Defer claiming past state pension age if you do not need the income immediately — each year of deferral adds 5.78% permanently." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The most effective options are: (1) Fill NI gaps with voluntary contributions — each gap costs £956.80 and adds £358.50/year for life. (2) If still working, continue accumulating qualifying NI years. (3) Check you received all NI credits you were entitled to during the marriage (child benefit, carer's allowance). (4) Defer claiming past state pension age if you do not need the income immediately — each year of deferral adds 5.78% permanently." }
         }
       ]
     },
@@ -145,7 +145,7 @@
 
 <header>
   <div class="container">
-    <div class="badge">🇬🇧 State Pension · Divorced Women · 2025/26</div>
+    <div class="badge">🇬🇧 State Pension · Divorced Women · 2026/27</div>
     <h1>State Pension for Divorced Women UK 2026</h1>
     <p>Divorce affects your state pension options. Find out what you're entitled to, whether you can use your ex-husband's NI record, and how to maximise your pension.</p>
   </div>
@@ -201,8 +201,8 @@
   <table class="data-table">
     <thead><tr><th>Your Situation</th><th>Can You Use Ex's NI Record?</th><th>What You Can Get</th></tr></thead>
     <tbody>
-      <tr><td>Reached SPA <strong>before 6 April 2016</strong> (old system)</td><td class="hl">✅ Yes — up to full basic pension</td><td>Up to £169.50/week (old basic rate 2025/26)</td></tr>
-      <tr><td>Reached SPA <strong>on/after 6 April 2016</strong> (new system)</td><td>❌ Very limited</td><td>Based mainly on your own NI record — up to £230.25/week</td></tr>
+      <tr><td>Reached SPA <strong>before 6 April 2016</strong> (old system)</td><td class="hl">✅ Yes — up to full basic pension</td><td>Up to £169.50/week (old basic rate 2026/27)</td></tr>
+      <tr><td>Reached SPA <strong>on/after 6 April 2016</strong> (new system)</td><td>❌ Very limited</td><td>Based mainly on your own NI record — up to £241.30/week</td></tr>
       <tr><td>Divorce settlement included <strong>Pension Sharing Order</strong></td><td>N/A — private/workplace pensions split</td><td>Depends on order — does not affect state pension directly</td></tr>
       <tr><td>Career break: received <strong>Child Benefit</strong> for children under 12</td><td>N/A</td><td>NI credits for each year — added to your own record ✅</td></tr>
     </tbody>
@@ -212,8 +212,8 @@
   <table class="data-table">
     <thead><tr><th>Priority</th><th>Action</th><th>Potential Benefit</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>Check NI record at gov.uk — confirm all Child Benefit credits are recorded</td><td>Each missing credit year = £342/year lost pension</td></tr>
-      <tr><td>2</td><td>Identify fillable NI gaps from marriage years</td><td>£923/gap → +£342/year for life</td></tr>
+      <tr><td>1</td><td>Check NI record at gov.uk — confirm all Child Benefit credits are recorded</td><td>Each missing credit year = £358.50/year lost pension</td></tr>
+      <tr><td>2</td><td>Identify fillable NI gaps from marriage years</td><td>£956.80/gap → +£358.50/year for life</td></tr>
       <tr><td>3</td><td>Check if old state pension rules apply to you (SPA before April 2016)</td><td>May be able to use ex-husband's NI record</td></tr>
       <tr><td>4</td><td>Confirm any Pension Sharing Orders from divorce covered private pensions</td><td>Private pension = often largest asset besides home</td></tr>
       <tr><td>5</td><td>Consider deferring state pension if still working</td><td>+5.78% per year deferred, permanently</td></tr>
@@ -252,7 +252,7 @@
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">How can I increase my state pension after divorce?</button>
-    <div class="faq-a">Key options: (1) Fill NI gaps with voluntary contributions — £923/gap adds £342/year for life. (2) Verify all Child Benefit NI credits are recorded. (3) Continue working to accumulate more qualifying years. (4) Consider deferring claim at SPA — +5.78%/year permanently. See our <a href="/ni-gaps/">NI gaps calculator</a> for ROI detail.</div>
+    <div class="faq-a">Key options: (1) Fill NI gaps with voluntary contributions — £956.80/gap adds £358.50/year for life. (2) Verify all Child Benefit NI credits are recorded. (3) Continue working to accumulate more qualifying years. (4) Consider deferring claim at SPA — +5.78%/year permanently. See our <a href="/ni-gaps/">NI gaps calculator</a> for ROI detail.</div>
   </div>
 </div>
 </div>
@@ -266,7 +266,7 @@
 </footer>
 
 <script>
-const FULL = 230.25; const MAX = 35; const GAP_COST = 923.00; const PER_YEAR = 342.04;
+const FULL = 241.30; const MAX = 35; const GAP_COST = 956.80; const PER_YEAR = 358.50;
 function calculate() {
   const niOwn = parseInt(document.getElementById('niOwn').value) || 0;
   const childYrs = parseInt(document.getElementById('childYears').value) || 0;
@@ -285,11 +285,11 @@ function calculate() {
   const shortfall = MAX - totalNI;
   const box = document.getElementById('advice-box');
   if (totalNI >= MAX) {
-    box.innerHTML = '✅ <strong>You have 35+ qualifying years — you are on track for the full state pension of £230.25/week.</strong>';
+    box.innerHTML = '✅ <strong>You have 35+ qualifying years — you are on track for the full state pension of £241.30/week.</strong>';
   } else if (shortfall <= 5) {
     box.innerHTML = `⚡ <strong>You need ${shortfall} more NI year${shortfall>1?'s':''} for the full pension.</strong> Filling ${shortfall} gap${shortfall>1?'s':''} costs £${Math.round(shortfall*GAP_COST).toLocaleString()} and adds £${Math.round(shortfall*PER_YEAR).toLocaleString()}/year for life.`;
   } else {
-    box.innerHTML = `ℹ️ You have ${totalNI} qualifying years. To reach the full pension, fill gaps or continue working. Each gap filled costs £923 and adds £342/year permanently.`;
+    box.innerHTML = `ℹ️ You have ${totalNI} qualifying years. To reach the full pension, fill gaps or continue working. Each gap filled costs £956.80 and adds £358.50/year permanently.`;
   }
   document.getElementById('result').style.display = 'block';
   document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
