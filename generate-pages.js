@@ -37,11 +37,14 @@ for (let year = 1955; year <= 1975; year++) {
 <title>State Pension Age Calculator Born ${year} — When Will I Get My UK State Pension?</title>
 <meta name="description" content="Born in ${year}? Your UK state pension age is ${spa}. You will reach state pension age in ${retYear}. Calculate your exact retirement date and estimated weekly pension amount. Free.">
 <meta name="keywords" content="state pension age calculator born ${year}, when will i get my state pension born ${year}, uk state pension ${year} birth year, british state pension born ${year}, state pension age ${year}">
-<link rel="canonical" href="https://uk-state-pension-calculator.co.uk/born-${year}/">
+<link rel="canonical" href="https://state-pension-calculator.co.uk/born-${year}/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png">
 <meta property="og:title" content="State Pension Age for People Born in ${year} — UK Calculator">
 <meta property="og:description" content="Born in ${year}: your state pension age is ${spa}, retirement from ${retYear}. Calculate your estimated weekly pension based on your NI years.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://uk-state-pension-calculator.co.uk/born-${year}/">
+<meta property="og:url" content="https://state-pension-calculator.co.uk/born-${year}/">
+<meta property="og:image" content="https://state-pension-calculator.co.uk/og-image.svg">
 <meta name="twitter:card" content="summary_large_image">
 
 <script type="application/ld+json">
@@ -51,7 +54,7 @@ for (let year = 1955; year <= 1975; year++) {
     {
       "@type": "WebApplication",
       "name": "UK State Pension Calculator — Born ${year}",
-      "url": "https://uk-state-pension-calculator.co.uk/born-${year}/",
+      "url": "https://state-pension-calculator.co.uk/born-${year}/",
       "description": "State pension age and amount calculator for people born in ${year}.",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Any",
@@ -81,8 +84,8 @@ for (let year = 1955; year <= 1975; year++) {
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://uk-state-pension-calculator.co.uk/" },
-        { "@type": "ListItem", "position": 2, "name": "Born ${year}", "item": "https://uk-state-pension-calculator.co.uk/born-${year}/" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://state-pension-calculator.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "Born ${year}", "item": "https://state-pension-calculator.co.uk/born-${year}/" }
       ]
     }
   ]
