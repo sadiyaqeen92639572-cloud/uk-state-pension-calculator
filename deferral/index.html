@@ -109,6 +109,8 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--bg); font-size: 16px; line-height: 1.65; }
   header { background: linear-gradient(135deg, #0d4f54 0%, #0d7377 100%); color: white; padding: 52px 20px 88px; text-align: center; }
   header .badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; margin-bottom: 16px; }
+  .verified-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font-size: 0.74rem; font-weight: 600; margin-top: 12px; color: rgba(255,255,255,.9); }
+  .verified-tag a { color: inherit; text-decoration: underline; }
   header h1 { font-size: clamp(1.4rem, 4vw, 2.1rem); font-weight: 800; margin-bottom: 12px; }
   header p { color: rgba(255,255,255,.9); font-size: 1rem; max-width: 580px; margin: 0 auto; }
   .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
@@ -206,6 +208,7 @@
     <div class="badge">🇬🇧 State Pension Deferral · 9 weeks = 1% · 2026/27</div>
     <h1>State Pension Deferral Calculator UK 2026</h1>
     <p>Every 9 weeks you delay claiming, your pension increases by 1% — permanently, for life. Calculate your boosted amount and whether deferring is worth it.</p>
+    <div class="verified-tag">✅ 2026/27 rates verified 30 Jul 2026 · <a href="https://www.gov.uk/state-pension" target="_blank" rel="noopener">gov.uk</a> · <a href="https://github.com/sadiyaqeen92639572-cloud/uk-state-pension-calculator" target="_blank" rel="noopener">independent &amp; open-source</a></div>
   </div>
 </header>
 
@@ -419,6 +422,7 @@
   <div class="container">
     <div class="fca-footer">State pension deferral calculator — information only, not financial advice. Based on 2026/27 DWP rates (1% per 9 weeks deferred). Deferral may affect means-tested benefits. Consult an FCA-authorised adviser for personalised guidance.</div>
     <p>Deferral calculator · <a href="/">Main Calculator</a> · <a href="/ni-gaps/">NI Gaps</a> · <a href="/voluntary-contributions/">Voluntary Contributions</a> · <a href="/state-pension-forecast/">Forecast</a></p>
+    <p style="font-size:.72rem;margin-top:8px;color:#cbd5e1;font-weight:600;">Independent, open-source calculator — not affiliated with, endorsed by, or connected to HM Government, DWP, or gov.uk. Not to be confused with similarly-named third-party sites.</p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
 </footer>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frozen State Pension Calculator 2026 — Living Abroad? See Your Loss</title>
+<meta name="description" content="Living outside the UK? Your state pension may be frozen at the rate when you left, missing yearly triple lock rises. Check if your country uprates or freezes your pension and see the estimated 10/20-year loss.">
+<meta name="keywords" content="frozen state pension calculator, uk state pension abroad, frozen pension expat, state pension uprating countries, state pension living abroad calculator">
+<link rel="canonical" href="https://state-pension-calculator.co.uk/frozen-pension/">
+<meta property="og:title" content="Frozen State Pension Calculator — Living Abroad? See Your Estimated Loss">
+<meta property="og:description" content="See whether your country of residence freezes or uprates your UK state pension, and estimate the cumulative gap over time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://state-pension-calculator.co.uk/frozen-pension/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Frozen State Pension — Living Abroad Guide 2026",
+      "url": "https://state-pension-calculator.co.uk/frozen-pension/",
+      "description": "Guide and indicative calculator for UK pensioners living abroad, explaining which countries freeze the state pension and which uprate it annually.",
+      "inLanguage": "en-GB",
+      "author": { "@type": "Organization", "name": "UK State Pension Calculator" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a frozen UK state pension?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A frozen state pension means your weekly amount stays fixed at the rate it was when you first claimed it, or when you moved abroad — it does not receive the annual triple lock increase that pensioners in the UK, the EEA, Switzerland, or agreement countries receive. Over time the real value falls further and further behind." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries freeze the UK state pension?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your pension is frozen if you live in a country without a reciprocal social security agreement covering uprating. Confirmed frozen countries include Australia, Canada, New Zealand, India, South Africa and Pakistan — around 84% of frozen pensioners live in Australia, Canada or New Zealand alone. Always check the official DWP list for your specific country, as arrangements vary and can change." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries still get the yearly increase?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your pension continues to rise every year if you live in the UK, an EEA country, Switzerland, Gibraltar, or a country that has a reciprocal social security agreement with the UK specifically covering pension uprating. Check gov.uk's official country list to confirm your specific destination." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the government going to change the frozen pension policy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "As of 2026, the UK Government has stated it has no plans to change the frozen pension policy, which has applied for over 70 years under successive governments. Campaign groups continue to lobby for change — check current news for the latest position before making relocation decisions." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I unfreeze my state pension if I move back to the UK?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you return to live in the UK, your state pension is uprated to the current full rate you would have received had you never left (based on your NI record), and continues rising with the triple lock from then on." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://state-pension-calculator.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "Frozen Pension", "item": "https://state-pension-calculator.co.uk/frozen-pension/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --brand: #0e7490; --brand-dark: #164e63; --brand-light: #ecfeff; --amber: #b45309; --amber-light: #fffbeb; --text: #1a1a2e; --muted: #64748b; --border: #e2e8f0; --bg: #f8fafc; --radius: 12px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--bg); font-size: 16px; line-height: 1.65; }
+  header { background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%); color: white; padding: 52px 20px 88px; text-align: center; }
+  header .badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; margin-bottom: 16px; }
+  .verified-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font-size: 0.74rem; font-weight: 600; margin-top: 12px; color: rgba(255,255,255,.9); }
+  .verified-tag a { color: inherit; text-decoration: underline; }
+  header h1 { font-size: clamp(1.4rem, 4vw, 2.1rem); font-weight: 800; margin-bottom: 12px; }
+  header p { color: rgba(255,255,255,.9); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+  .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
+  .tool-wrapper { margin: -56px auto 56px; }
+  .tool-card { background: white; border-radius: var(--radius); box-shadow: 0 8px 40px rgba(0,0,0,.12); border: 1px solid var(--border); padding: 36px 32px; }
+  @media (max-width: 580px) { .tool-card { padding: 22px 16px; } }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 0.79rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  select, input[type=number] { border: 2px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 1rem; color: var(--text); background: white; width: 100%; }
+  select:focus, input[type=number]:focus { outline: none; border-color: var(--brand); }
+  .calc-btn { width: 100%; margin-top: 20px; padding: 17px; background: var(--brand); color: white; border: none; border-radius: 10px; font-size: 1.05rem; font-weight: 700; cursor: pointer; }
+  .calc-btn:hover { background: var(--brand-dark); }
+  .result { display: none; margin-top: 28px; }
+  .result-hero { border-radius: 10px; padding: 26px; color: white; text-align: center; margin-bottom: 16px; }
+  .result-hero.frozen { background: linear-gradient(135deg, #7f1d1d, #b91c1c); }
+  .result-hero.uprated { background: linear-gradient(135deg, #064e3b, #16a34a); }
+  .result-hero .rl { font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; opacity: .85; margin-bottom: 4px; }
+  .result-hero .ra { font-size: 1.5rem; font-weight: 900; }
+  .result-hero .rs { font-size: 0.88rem; opacity: .9; margin-top: 6px; }
+  .r-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+  @media (max-width: 480px) { .r-grid { grid-template-columns: 1fr; } }
+  .r-stat { background: var(--brand-light); border-radius: 8px; padding: 14px; text-align: center; }
+  .r-stat .sv { font-size: 1.1rem; font-weight: 800; color: var(--brand-dark); }
+  .r-stat .sl { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+  .fca-notice { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 14px; font-size: 0.78rem; color: #78350f; }
+  .content { padding-bottom: 64px; }
+  h2 { font-size: 1.25rem; font-weight: 800; margin: 48px 0 16px; }
+  p { color: #374151; margin-bottom: 14px; line-height: 1.75; }
+  .source-tag { font-size: 0.78rem; color: var(--muted); margin: -8px 0 20px; }
+  .source-tag a { color: var(--brand-dark); }
+  .data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.87rem; }
+  .data-table th { background: var(--brand); color: white; padding: 10px 14px; text-align: left; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .data-table tr:nth-child(even) td { background: #f0fdfd; }
+  .hl { font-weight: 700; color: var(--brand-dark); }
+  .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 48px 0; }
+  @media (max-width: 560px) { .cta-grid { grid-template-columns: 1fr; } }
+  .cta-card { background: #0f2d5a; color: white; border-radius: var(--radius); padding: 26px 22px; }
+  .cta-card h3 { color: white; font-size: 1rem; margin-bottom: 8px; }
+  .cta-card p { color: rgba(255,255,255,.85); font-size: 0.86rem; margin-bottom: 14px; }
+  .cta-btn { display: block; text-align: center; text-decoration: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; }
+  .cta-btn.white { background: white; color: #0f2d5a; }
+  .cta-btn.gold { background: #f59e0b; color: #1a1a2e; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 17px 0; font-size: 0.9rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
+  .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--brand); flex-shrink: 0; margin-left: 12px; }
+  .faq-q.open::after { content: '−'; }
+  .faq-a { display: none; padding: 0 0 16px; font-size: 0.87rem; color: #4b5563; line-height: 1.75; }
+  .faq-a.open { display: block; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--brand-dark); text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 28px; }
+  footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px 20px; font-size: 0.8rem; }
+  footer p { color: #94a3b8; }
+  footer a { color: #cbd5e1; }
+  .fca-footer { background: #1e293b; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; font-size: 0.77rem; color: #94a3b8; }
+  .eeat-section { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-top: 28px; box-shadow: 0 4px 20px rgba(15,45,90,.05); }
+  .eeat-title { font-size: 1.15rem; font-weight: 800; color: var(--brand-dark); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid var(--brand-light); padding-bottom: 10px; }
+  .eeat-compliance-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+  .eeat-compliance-item:last-child { margin-bottom: 0; }
+  .eeat-compliance-icon { color: var(--brand); flex-shrink: 0; margin-top: 3px; }
+  .eeat-compliance-text h4 { font-size: 0.92rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 2px; }
+  .eeat-compliance-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 0; }
+  .eeat-compliance-text a { color: var(--brand-dark); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="badge">🌍 Frozen State Pension · Living Abroad</div>
+    <h1>Frozen State Pension Calculator — Living Abroad?</h1>
+    <p>Some countries freeze your UK state pension at the rate when you left — missing every future triple lock rise. Check your country and see an indicative estimate of the gap over time.</p>
+    <div class="verified-tag">✅ Guidance verified 30 Jul 2026 · <a href="https://www.gov.uk/state-pension-if-you-retire-abroad" target="_blank" rel="noopener">gov.uk</a> · <a href="https://github.com/sadiyaqeen92639572-cloud/uk-state-pension-calculator" target="_blank" rel="noopener">independent &amp; open-source</a></div>
+  </div>
+</header>
+
+<div class="container">
+<div class="tool-wrapper">
+  <div class="tool-card">
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Country of Residence</label>
+        <select id="country">
+          <option value="uprated">EEA country, Switzerland or Gibraltar</option>
+          <option value="uprated">USA (reciprocal agreement — uprated)</option>
+          <option value="uprated">Philippines (reciprocal agreement — uprated)</option>
+          <option value="uprated">Turkey (reciprocal agreement — uprated)</option>
+          <option value="frozen">Australia (frozen)</option>
+          <option value="frozen">Canada (frozen)</option>
+          <option value="frozen">New Zealand (frozen)</option>
+          <option value="frozen">India (frozen)</option>
+          <option value="frozen">South Africa (frozen)</option>
+          <option value="frozen">Pakistan (frozen)</option>
+          <option value="unknown">Other / not listed here — check gov.uk list</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Current Weekly Pension</label>
+        <input type="number" id="weeklyPension" min="0" value="241.30" step="0.01">
+      </div>
+      <div class="form-group">
+        <label>Years Living Abroad (projection)</label>
+        <input type="number" id="yearsAbroad" min="1" max="30" value="10">
+      </div>
+    </div>
+    <button class="calc-btn" onclick="check()">Check My Situation →</button>
+
+    <div class="result" id="result">
+      <div class="result-hero" id="result-hero">
+        <div class="rl" id="h-label">Status</div>
+        <div class="ra" id="h-status"></div>
+        <div class="rs" id="h-sub"></div>
+      </div>
+      <div class="r-grid" id="frozen-stats" style="display:none;">
+        <div class="r-stat"><div class="sv" id="r-current"></div><div class="sl">Weekly now</div></div>
+        <div class="r-stat"><div class="sv" id="r-uprated-est"></div><div class="sl">If uprated (illustrative, ~4%/yr)</div></div>
+        <div class="r-stat"><div class="sv" id="r-loss"></div><div class="sl">Illustrative cumulative gap</div></div>
+      </div>
+      <div class="fca-notice">ℹ️ The uprated comparison uses an illustrative average rise (not a forecast) purely to show the mechanism. Actual triple lock rises vary year to year. Always confirm your country's status on the official <a href="https://www.gov.uk/state-pension-if-you-retire-abroad" target="_blank" rel="noopener">gov.uk list</a> before making decisions.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <a href="/" class="back-link">← British State Pension Calculator</a>
+
+  <h2>Uprated vs Frozen — Confirmed Countries</h2>
+  <p class="source-tag">Source: <a href="https://commonslibrary.parliament.uk/research-briefings/sn01457/" target="_blank" rel="noopener">House of Commons Library — Frozen Overseas Pensions</a> and <a href="https://www.gov.uk/state-pension-if-you-retire-abroad" target="_blank" rel="noopener">gov.uk</a>. Verified 30 Jul 2026 — always check the official gov.uk list for your specific destination, as this is not exhaustive.</p>
+  <table class="data-table">
+    <thead><tr><th>Status</th><th>Where confirmed</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">✅ Uprated (rises every year)</td><td>UK, all EEA countries, Switzerland, Gibraltar, plus USA, Philippines and Turkey via reciprocal social security agreements covering pension uprating.</td></tr>
+      <tr><td class="hl">❄️ Frozen (fixed at first-claimed / departure rate)</td><td>Australia, Canada, New Zealand, India, South Africa, Pakistan, and most other Commonwealth and non-agreement countries. Around 84% of frozen pensioners live in Australia, Canada or New Zealand alone.</td></tr>
+    </tbody>
+  </table>
+  <p>The rules depend on whether the UK has a reciprocal agreement with your specific country of residence that explicitly covers state pension uprating — agreement terms vary by country and can include partial coverage. This page lists the clearly confirmed, well-documented cases; for any country not shown here, always check the <a href="https://www.gov.uk/state-pension-if-you-retire-abroad" target="_blank" rel="noopener">official gov.uk list</a> before relying on any third-party summary, including this one.</p>
+
+  <h2>Why This Matters</h2>
+  <p>A frozen pension doesn't just fail to grow — it falls in real value every year due to inflation and misses every future triple lock rise the equivalent UK-based pensioner receives. Over a 15-20 year retirement, this gap compounds significantly. Government policy on this has been unchanged for over 70 years and, as of 2026, there are no announced plans to change it — check current news before relying on a policy shift.</p>
+
+  <div class="cta-grid">
+    <div class="cta-card">
+      <h3>👔 Get Retirement Advice Before Moving Abroad</h3>
+      <p>Considering retiring overseas? An FCA-authorised adviser can factor frozen-pension risk into your full retirement income plan before you commit.</p>
+      <a href="https://www.unbiased.co.uk/" class="cta-btn gold" target="_blank" rel="noopener sponsored">Find a Retirement IFA →</a>
+    </div>
+    <div class="cta-card">
+      <h3>🐝 Check Your Workplace Pensions Too</h3>
+      <p>Workplace and private pensions are not affected by the frozen state pension rule — but consolidating scattered pots gives a clearer full retirement income picture.</p>
+      <a href="https://www.pensionbee.com/" class="cta-btn white" target="_blank" rel="noopener sponsored">Find My Lost Pensions →</a>
+    </div>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is a frozen UK state pension?</button>
+    <div class="faq-a">Your weekly amount stays fixed at the rate it was when you first claimed it, or when you moved abroad — it does not receive the annual triple lock increase given to pensioners in the UK, EEA, Switzerland, or agreement countries. The real value falls further behind every year.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Which countries freeze the pension?</button>
+    <div class="faq-a">Confirmed frozen countries include Australia, Canada, New Zealand, India, South Africa and Pakistan. Around 84% of all frozen pensioners live in Australia, Canada or New Zealand. Check the official gov.uk list for any country not listed here.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Which countries still get the increase?</button>
+    <div class="faq-a">The UK, EEA countries, Switzerland, Gibraltar, and countries with a reciprocal social security agreement with the UK that specifically covers pension uprating. Confirm your specific destination on the official gov.uk list before relying on this summary.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Will the policy change?</button>
+    <div class="faq-a">As of 2026, the UK Government has stated it has no plans to change this policy, which has applied for over 70 years under successive governments. Campaign groups continue to lobby for reform — check current news before making relocation decisions based on any expected change.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Can I unfreeze it by moving back to the UK?</button>
+    <div class="faq-a">Yes. If you return to live in the UK, your pension is uprated to the current full rate based on your NI record, and continues rising with the triple lock from then on.</div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="eeat-section">
+    <h2 class="eeat-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--brand-dark);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+      Transparency &amp; Methodology
+    </h2>
+    <div class="eeat-compliance-item">
+      <svg class="eeat-compliance-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      <div class="eeat-compliance-text"><h4>Sourced country list, not exhaustive</h4><p>Uprated/frozen categorisation sourced from the House of Commons Library and gov.uk, verified 30 Jul 2026. For any country not explicitly listed, always check the <a href="https://www.gov.uk/state-pension-if-you-retire-abroad" target="_blank" rel="noopener">official gov.uk list</a> — bilateral agreement terms vary and can change.</p></div>
+    </div>
+    <div class="eeat-compliance-item">
+      <svg class="eeat-compliance-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <div class="eeat-compliance-text"><h4>Not financial advice</h4><p>Not FCA-regulated itself — for personalised guidance consult an adviser via the <a href="https://register.fca.org.uk/" target="_blank" rel="noopener">FCA Register</a> or free <a href="https://www.moneyhelper.org.uk/" target="_blank" rel="noopener">MoneyHelper</a> service.</p></div>
+    </div>
+    <div class="eeat-compliance-item">
+      <svg class="eeat-compliance-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+      <div class="eeat-compliance-text"><h4>Open source</h4><p>Formulas and page generator are public on <a href="https://github.com/sadiyaqeen92639572-cloud/uk-state-pension-calculator" target="_blank" rel="noopener">GitHub</a>.</p></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="fca-footer">Frozen pension guide — factual information only, not financial advice. Country status sourced from House of Commons Library and gov.uk, verified 30 Jul 2026. Confirm your destination on the <a href="https://www.gov.uk/state-pension-if-you-retire-abroad">official gov.uk list</a>.</div>
+    <p>Frozen pension guide · <a href="/">Main Calculator</a> · <a href="/deferral/">Deferral</a> · <a href="/ni-gaps/">NI Gaps</a></p>
+    <p style="font-size:.72rem;margin-top:8px;color:#cbd5e1;font-weight:600;">Independent, open-source calculator — not affiliated with, endorsed by, or connected to HM Government, DWP, or gov.uk. Not to be confused with similarly-named third-party sites.</p>
+    <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
+  </div>
+</footer>
+
+<script>
+function check() {
+  const sel = document.getElementById('country');
+  const status = sel.value;
+  const weekly = parseFloat(document.getElementById('weeklyPension').value) || 241.30;
+  const years = parseInt(document.getElementById('yearsAbroad').value) || 10;
+  const hero = document.getElementById('result-hero');
+  const stats = document.getElementById('frozen-stats');
+
+  if (status === 'frozen') {
+    hero.className = 'result-hero frozen';
+    document.getElementById('h-label').textContent = 'Status';
+    document.getElementById('h-status').textContent = '❄️ Your pension would be frozen';
+    document.getElementById('h-sub').textContent = 'Fixed at £' + weekly.toFixed(2) + '/week — no future triple lock increases while resident there.';
+
+    const uprated = weekly * Math.pow(1.04, years);
+    const annualLossTotal = (uprated - weekly) * 52 * years / 2; // rough triangular cumulative gap
+    document.getElementById('r-current').textContent = '£' + weekly.toFixed(2) + '/wk';
+    document.getElementById('r-uprated-est').textContent = '£' + uprated.toFixed(2) + '/wk';
+    document.getElementById('r-loss').textContent = '≈£' + Math.round(annualLossTotal).toLocaleString();
+    stats.style.display = 'grid';
+  } else if (status === 'uprated') {
+    hero.className = 'result-hero uprated';
+    document.getElementById('h-label').textContent = 'Status';
+    document.getElementById('h-status').textContent = '✅ Your pension should be uprated';
+    document.getElementById('h-sub').textContent = 'Continues rising with the triple lock each year, same as if you lived in the UK. Confirm on gov.uk for full certainty.';
+    stats.style.display = 'none';
+  } else {
+    hero.className = 'result-hero frozen';
+    document.getElementById('h-label').textContent = 'Status';
+    document.getElementById('h-status').textContent = '❓ Not confirmed here';
+    document.getElementById('h-sub').textContent = 'This country is not in our confirmed shortlist — check the official gov.uk list for a definitive answer.';
+    stats.style.display = 'none';
+  }
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function toggleFaq(btn) { btn.classList.toggle('open'); btn.nextElementSibling.classList.toggle('open'); }
+</script>
+</body>
+</html>

@@ -41,12 +41,12 @@
         {
           "@type": "Question",
           "name": "How is the state pension forecast calculated?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The forecast is based on your current qualifying NI years plus projected future years you will accumulate before reaching state pension age. The 2026/27 full new state pension is £241.30 per week for 35 qualifying years. Each qualifying year is worth £6.89/week. If you project reaching, say, 32 qualifying years, your forecast would be 32/35 × £241.30 = £210.51/week." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The forecast is based on your current qualifying NI years plus projected future years you will accumulate before reaching state pension age. The 2026/27 full new state pension is £241.30 per week for 35 qualifying years. Each qualifying year is worth £6.89/week. If you project reaching, say, 32 qualifying years, your forecast would be 32/35 × £241.30 = £220.62/week." }
         },
         {
           "@type": "Question",
           "name": "How does working more years affect my state pension forecast?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Each additional qualifying year of work (or NI credits) adds £6.89 per week to your state pension. So working 3 additional years versus retiring early could add £19.74/week = £1,026/year to your state pension for life. Once you have 35 qualifying years, additional years add nothing more." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Each additional qualifying year of work (or NI credits) adds £6.89 per week to your state pension. So working 3 additional years versus retiring early could add £20.68/week = £1,076/year to your state pension for life. Once you have 35 qualifying years, additional years add nothing more." }
         },
         {
           "@type": "Question",
@@ -66,7 +66,7 @@
         {
           "@type": "Question",
           "name": "What happens to my state pension forecast if I defer claiming it?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Deferring your state pension past state pension age increases it by 1% for every 9 weeks you wait — approximately 5.8% per year. If you defer for 2 years, a full pension of £241.30/week would become approximately £256.97/week. This is separate from any extra NI years you might accumulate by working longer." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Deferring your state pension past state pension age increases it by 1% for every 9 weeks you wait — approximately 5.78% per year. If you defer for 2 years, a full pension of £241.30/week would become approximately £269.19/week. This is separate from any extra NI years you might accumulate by working longer." }
         }
       ]
     },
@@ -87,6 +87,8 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--bg); font-size: 16px; line-height: 1.65; }
   header { background: linear-gradient(135deg, #1e1b4b 0%, #1e4d8c 100%); color: white; padding: 52px 20px 88px; text-align: center; }
   header .badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; margin-bottom: 16px; }
+  .verified-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font-size: 0.74rem; font-weight: 600; margin-top: 12px; color: rgba(255,255,255,.9); }
+  .verified-tag a { color: inherit; text-decoration: underline; }
   header h1 { font-size: clamp(1.4rem, 4vw, 2.1rem); font-weight: 800; margin-bottom: 12px; }
   header p { color: rgba(255,255,255,.9); font-size: 1rem; max-width: 580px; margin: 0 auto; }
   .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
@@ -167,6 +169,7 @@
     <div class="badge">🇬🇧 State Pension Forecast · 2026/27 Rates</div>
     <h1>UK State Pension Forecast Calculator 2026</h1>
     <p>Enter your current NI years and age → project your state pension at retirement and see how continued working boosts your forecast.</p>
+    <div class="verified-tag">✅ 2026/27 rates verified 30 Jul 2026 · <a href="https://www.gov.uk/state-pension" target="_blank" rel="noopener">gov.uk</a> · <a href="https://github.com/sadiyaqeen92639572-cloud/uk-state-pension-calculator" target="_blank" rel="noopener">independent &amp; open-source</a></div>
   </div>
 </header>
 
@@ -278,7 +281,7 @@
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">How does working more years affect my forecast?</button>
-    <div class="faq-a">Each additional qualifying year adds £6.89/week = £358.50/year to your pension for life. Working 5 extra years (vs retiring early) adds £33.90/week = £1,763/year — a significant boost over a 20-year retirement of £35,260 extra.</div>
+    <div class="faq-a">Each additional qualifying year adds £6.89/week = £358.50/year to your pension for life. Working 5 extra years (vs retiring early) adds £34.47/week = £1,793/year — a significant boost over a 20-year retirement of £35,850 extra.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I get my official state pension forecast online?</button>
@@ -320,6 +323,7 @@
   <div class="container">
     <div class="fca-footer">State pension forecast tool — information only, not financial advice. Based on 2026/27 DWP rates. Official forecast: <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>.</div>
     <p>State pension forecast · <a href="/">Main Calculator</a> · <a href="/ni-gaps/">NI Gaps Calculator</a> · <a href="/voluntary-contributions/">Voluntary Contributions</a></p>
+    <p style="font-size:.72rem;margin-top:8px;color:#cbd5e1;font-weight:600;">Independent, open-source calculator — not affiliated with, endorsed by, or connected to HM Government, DWP, or gov.uk. Not to be confused with similarly-named third-party sites.</p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
 </footer>

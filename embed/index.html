@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK State Pension Calculator Widget</title>
+<meta name="robots" content="noindex, follow">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --brand: #1e4d8c; --brand-dark: #0f2d5a; --brand-light: #e8f0fb; --text: #1a1a2e; --muted: #64748b; --border: #e2e8f0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: white; font-size: 15px; line-height: 1.5; padding: 16px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .form-group { display: flex; flex-direction: column; gap: 4px; }
+  label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+  select, input[type=number] { border: 1.5px solid var(--border); border-radius: 6px; padding: 8px 10px; font-size: 0.92rem; color: var(--text); background: white; width: 100%; }
+  select:focus, input[type=number]:focus { outline: none; border-color: var(--brand); }
+  .calc-btn { width: 100%; padding: 11px; background: var(--brand); color: white; border: none; border-radius: 7px; font-size: 0.92rem; font-weight: 700; cursor: pointer; }
+  .calc-btn:hover { background: var(--brand-dark); }
+  .result { display: none; margin-top: 14px; background: var(--brand-light); border-radius: 8px; padding: 14px; text-align: center; }
+  .result .ra { font-size: 1.5rem; font-weight: 900; color: var(--brand-dark); }
+  .result .rs { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+  .credit { text-align: center; margin-top: 10px; font-size: 0.72rem; color: var(--muted); }
+  .credit a { color: var(--brand); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="form-grid">
+  <div class="form-group">
+    <label>Birth Year</label>
+    <select id="birthYear"></select>
+  </div>
+  <div class="form-group">
+    <label>NI Qualifying Years</label>
+    <input type="number" id="niYears" min="0" max="45" placeholder="e.g. 30">
+  </div>
+</div>
+<button class="calc-btn" onclick="calc()">Calculate My Pension →</button>
+
+<div class="result" id="result">
+  <div class="ra" id="r-weekly"></div>
+  <div class="rs" id="r-sub"></div>
+</div>
+
+<div class="credit">Powered by <a href="https://state-pension-calculator.co.uk/" target="_blank" rel="noopener">state-pension-calculator.co.uk</a></div>
+
+<script>
+const FULL = 241.30, MAX_YEARS = 35, MIN_YEARS = 10;
+const sel = document.getElementById('birthYear');
+for (let y = 1950; y <= 2000; y++) {
+  const opt = document.createElement('option');
+  opt.value = y; opt.textContent = y;
+  if (y === 1970) opt.selected = true;
+  sel.appendChild(opt);
+}
+function calc() {
+  const ni = parseInt(document.getElementById('niYears').value) || 0;
+  const pension = ni < MIN_YEARS ? 0 : Math.min(ni, MAX_YEARS) / MAX_YEARS * FULL;
+  document.getElementById('r-weekly').textContent = ni < MIN_YEARS ? '£0.00/week' : '£' + pension.toFixed(2) + '/week';
+  document.getElementById('r-sub').textContent = ni < MIN_YEARS ? `Need at least ${MIN_YEARS} NI years` : `Based on ${ni} qualifying NI years · 2026/27 rates`;
+  document.getElementById('result').style.display = 'block';
+}
+</script>
+</body>
+</html>

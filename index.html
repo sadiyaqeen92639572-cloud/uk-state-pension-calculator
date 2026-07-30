@@ -130,6 +130,8 @@
 
   header { background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%); color: white; padding: 52px 20px 88px; text-align: center; }
   header .badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; letter-spacing: .4px; margin-bottom: 16px; }
+  .verified-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font-size: 0.74rem; font-weight: 600; margin-top: 12px; color: rgba(255,255,255,.9); }
+  .verified-tag a { color: inherit; text-decoration: underline; }
   header h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 12px; }
   header p { color: rgba(255,255,255,.9); font-size: 1rem; max-width: 580px; margin: 0 auto; }
 
@@ -248,6 +250,7 @@
     <div class="badge">🇬🇧 United Kingdom · 2026/27 Rates</div>
     <h1>British State Pension Calculator 2026</h1>
     <p>Enter your date of birth and National Insurance years — get your state pension age, retirement date, and estimated weekly amount instantly.</p>
+    <div class="verified-tag">✅ 2026/27 rates verified 30 Jul 2026 · <a href="https://www.gov.uk/state-pension" target="_blank" rel="noopener">gov.uk</a> · <a href="https://github.com/sadiyaqeen92639572-cloud/uk-state-pension-calculator" target="_blank" rel="noopener">independent &amp; open-source</a></div>
   </div>
 </header>
 
@@ -389,7 +392,22 @@
     <a href="/waspi/" style="display:block;background:white;border:1px solid #7c3aed20;border-left:3px solid #7c3aed;border-radius:10px;padding:18px 16px;text-decoration:none;color:#1a1a2e;transition:box-shadow .15s;">
       <div style="font-size:1.25rem;margin-bottom:6px;">📣</div>
       <div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">WASPI Women</div>
-      <div style="font-size:.78rem;color:#64748b;line-height:1.5;">Born 1950–1960? SPA rose 60→66. Check impact, PHSO findings &amp; your options.</div>
+      <div style="font-size:.78rem;color:#64748b;line-height:1.5;">Born 1950–1960? SPA rose 60→66. Compensation tracker &amp; your options.</div>
+    </a>
+    <a href="/contracted-out/" style="display:block;background:white;border:1px solid #e2e8f0;border-radius:10px;padding:18px 16px;text-decoration:none;color:#1a1a2e;transition:box-shadow .15s;">
+      <div style="font-size:1.25rem;margin-bottom:6px;">🧩</div>
+      <div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">COPE Explainer</div>
+      <div style="font-size:.78rem;color:#64748b;line-height:1.5;">Why is your starting amount lower than expected? Contracted-out deduction explained.</div>
+    </a>
+    <a href="/frozen-pension/" style="display:block;background:white;border:1px solid #0e749020;border-left:3px solid #0e7490;border-radius:10px;padding:18px 16px;text-decoration:none;color:#1a1a2e;transition:box-shadow .15s;">
+      <div style="font-size:1.25rem;margin-bottom:6px;">🌍</div>
+      <div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">Frozen Pension (Expats)</div>
+      <div style="font-size:.78rem;color:#64748b;line-height:1.5;">Moving abroad? See which countries freeze your pension and which uprate it.</div>
+    </a>
+    <a href="/rate-history/" style="display:block;background:white;border:1px solid #e2e8f0;border-radius:10px;padding:18px 16px;text-decoration:none;color:#1a1a2e;transition:box-shadow .15s;">
+      <div style="font-size:1.25rem;margin-bottom:6px;">📈</div>
+      <div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">Rate History 2016–2026</div>
+      <div style="font-size:.78rem;color:#64748b;line-height:1.5;">Full year-by-year table of the state pension rate and triple lock increases.</div>
     </a>
   </div>
 
@@ -480,7 +498,7 @@
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I increase my state pension by buying extra NI years?</button>
-    <div class="faq-a">Yes. Voluntary Class 3 NI contributions cost approximately <strong>£956.80 per missing year</strong> (2026/27 rate). Each year bought adds £358.50/year to your pension for life — the break-even point is around 2.5 years of retirement. This is often one of the most tax-efficient investments available to people approaching retirement. Check gov.uk to see which years you can fill.</div>
+    <div class="faq-a">Yes. Voluntary Class 3 NI contributions cost approximately <strong>£956.80 per missing year</strong> (2026/27 rate). Each year bought adds £358.50/year to your pension for life — the break-even point is around 2.7 years of retirement. This is often one of the most tax-efficient investments available to people approaching retirement. Check gov.uk to see which years you can fill.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What is the triple lock guarantee?</button>
@@ -498,6 +516,13 @@
     <button class="faq-q" onclick="toggleFaq(this)">Does the state pension count as taxable income?</button>
     <div class="faq-a">Yes. The state pension counts as <strong>taxable income</strong>, though HMRC does not deduct tax from it automatically. If your total income (state pension + other pensions + earnings) exceeds the personal allowance (£12,570 for 2026/27), you will pay income tax on the excess — usually collected via PAYE on a private pension or via a self-assessment return.</div>
   </div>
+
+  <h2 class="st">Embed This Calculator On Your Site</h2>
+  <p>Run a finance blog, forum, or advice site? Embed our free mini state pension calculator directly on your page — it stays live and up to date automatically.</p>
+  <div style="background:#0f172a;border-radius:10px;padding:16px 18px;overflow-x:auto;margin-bottom:14px;">
+    <code id="embed-snippet" style="color:#e2e8f0;font-size:0.82rem;white-space:pre;font-family:'SF Mono',Consolas,monospace;">&lt;iframe src="https://state-pension-calculator.co.uk/embed/" width="100%" height="360" style="border:1px solid #e2e8f0;border-radius:10px;" title="UK State Pension Calculator" loading="lazy"&gt;&lt;/iframe&gt;</code>
+  </div>
+  <button onclick="copyEmbed()" style="padding:10px 18px;background:var(--brand);color:white;border:none;border-radius:8px;font-weight:700;font-size:0.88rem;cursor:pointer;" id="embed-copy-btn">Copy Embed Code</button>
 
 </div>
 </div>
@@ -560,6 +585,7 @@
       <strong>Disclaimer:</strong> This tool provides information only and does not constitute financial advice. State pension estimates are based on 2026/27 HMRC rates. For personalised financial advice, consult an FCA-authorised financial adviser. For your official state pension forecast, visit <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>.
     </div>
     <p>Data based on 2026/27 DWP/HMRC rates · Updated July 2026 · <a href="https://www.gov.uk/state-pension">gov.uk state pension</a></p>
+    <p style="font-size:.72rem;margin-top:8px;color:#cbd5e1;font-weight:600;">Independent, open-source calculator — not affiliated with, endorsed by, or connected to HM Government, DWP, or gov.uk. Not to be confused with similarly-named third-party sites.</p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
 </footer>
@@ -651,6 +677,16 @@ function calculate() {
 function toggleFaq(btn) {
   btn.classList.toggle('open');
   btn.nextElementSibling.classList.toggle('open');
+}
+
+function copyEmbed() {
+  const text = document.getElementById('embed-snippet').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('embed-copy-btn');
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => { btn.textContent = original; }, 2000);
+  });
 }
 </script>
 </body>

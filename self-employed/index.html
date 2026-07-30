@@ -36,17 +36,17 @@
         {
           "@type": "Question",
           "name": "Do self-employed people get the same state pension as employees?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Self-employed people are entitled to exactly the same new state pension as employees — up to £241.30 per week for 2026/27 with 35 qualifying National Insurance years. The only difference is how NI contributions are paid: self-employed people pay Class 2 NI (£3.65/week if profits exceed £12,570) rather than Class 1 NI through PAYE." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Self-employed people are entitled to exactly the same new state pension as employees — up to £241.30 per week for 2026/27 with 35 qualifying National Insurance years. The only difference is how NI contributions are paid: self-employed people build qualifying years via Class 2 NI (£3.65/week, treated as paid automatically once profits exceed the £7,105 Small Profits Threshold) rather than Class 1 NI through PAYE." }
         },
         {
           "@type": "Question",
           "name": "How much NI do self-employed people pay for their state pension?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Self-employed people with profits above the Lower Profits Limit (£12,570 for 2026/27) pay Class 2 NI at £3.65 per week (£189.80 per year). This is far cheaper than the Class 3 voluntary rate of £956.80 per year for filling gaps. Class 2 NI is collected annually through your Self Assessment tax return." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Once profits exceed the Small Profits Threshold (£7,105 for 2026/27), Class 2 NI is treated as paid automatically at £3.65 per week (£189.80 per year) with no separate payment needed. This is far cheaper than the Class 3 voluntary rate of £956.80 per year for filling gaps. Separately, Class 4 NI (6% on profits £12,570–£50,270, 2% above) is a tax and does not build any state pension entitlement." }
         },
         {
           "@type": "Question",
-          "name": "What happens if my self-employed profits are below £12,570?",
-          "acceptedAnswer": { "@type": "Answer", "text": "If your self-employed profits are below the Lower Profits Limit (£12,570 for 2026/27), you do not automatically accrue a qualifying NI year. You can pay voluntary Class 2 NI at £3.65/week (£189.80/year) to protect your state pension entitlement. This is still significantly cheaper than Class 3 voluntary contributions at £956.80/year." }
+          "name": "What happens if my self-employed profits are below £7,105?",
+          "acceptedAnswer": { "@type": "Answer", "text": "If your self-employed profits are below the Small Profits Threshold (£7,105 for 2026/27), Class 2 is not treated as paid automatically and you do not accrue a qualifying NI year. You can elect to pay voluntary Class 2 NI at £3.65/week (£189.80/year) to protect your state pension entitlement. This is still significantly cheaper than Class 3 voluntary contributions at £956.80/year." }
         },
         {
           "@type": "Question",
@@ -56,7 +56,7 @@
         {
           "@type": "Question",
           "name": "Does Class 4 NI count towards the state pension?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Class 4 NI contributions (8% on profits between £12,570 and £50,270, and 2% above) do not count towards your state pension or any other benefit. Only Class 2 NI contributions build your state pension entitlement. Class 4 is purely a tax on self-employed profits." }
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Class 4 NI contributions (6% on profits between the £12,570 Lower Profits Limit and £50,270 Upper Profits Limit, and 2% above) do not count towards your state pension or any other benefit. Only Class 2 NI contributions build your state pension entitlement. Class 4 is purely a tax on self-employed profits." }
         },
         {
           "@type": "Question",
@@ -87,6 +87,8 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--bg); font-size: 16px; line-height: 1.65; }
   header { background: linear-gradient(135deg, #431407 0%, #ea580c 100%); color: white; padding: 52px 20px 88px; text-align: center; }
   header .badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; margin-bottom: 16px; }
+  .verified-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font-size: 0.74rem; font-weight: 600; margin-top: 12px; color: rgba(255,255,255,.9); }
+  .verified-tag a { color: inherit; text-decoration: underline; }
   header h1 { font-size: clamp(1.4rem, 4vw, 2.1rem); font-weight: 800; margin-bottom: 12px; }
   header p { color: rgba(255,255,255,.9); font-size: 1rem; max-width: 580px; margin: 0 auto; }
   .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
@@ -163,6 +165,7 @@
     <div class="badge">🇬🇧 Self-Employed · Class 2 NI £3.65/week · 2026/27</div>
     <h1>State Pension for Self-Employed UK 2026</h1>
     <p>Self-employed people get the same state pension as employees. Class 2 NI costs just £3.65/week — calculate your forecast and check you're on track.</p>
+    <div class="verified-tag">✅ 2026/27 rates verified 30 Jul 2026 · <a href="https://www.gov.uk/state-pension" target="_blank" rel="noopener">gov.uk</a> · <a href="https://github.com/sadiyaqeen92639572-cloud/uk-state-pension-calculator" target="_blank" rel="noopener">independent &amp; open-source</a></div>
   </div>
 </header>
 
@@ -189,8 +192,8 @@
       <div class="form-group">
         <label>Annual Profit Level</label>
         <select id="profits">
-          <option value="above">Above £12,570 (pay Class 2 auto)</option>
-          <option value="below">Below £12,570 (voluntary Class 2)</option>
+          <option value="above">Above £7,105 (Class 2 treated as paid)</option>
+          <option value="below">Below £7,105 (voluntary Class 2)</option>
           <option value="gaps">Have years with no SE income</option>
         </select>
       </div>
@@ -229,9 +232,9 @@
   <table class="data-table">
     <thead><tr><th>NI Class</th><th>Who Pays</th><th>Rate</th><th>Counts Toward Pension?</th></tr></thead>
     <tbody>
-      <tr><td class="hl">Class 2</td><td>Self-employed profits > £12,570</td><td class="hl">£3.65/week (£189.80/yr)</td><td class="hl">✅ Yes — qualifies for state pension</td></tr>
-      <tr><td>Class 4</td><td>Self-employed profits > £12,570</td><td>8% on profits £12,570–£50,270</td><td>❌ No — tax only, no pension benefit</td></tr>
-      <tr><td>Voluntary Class 2</td><td>SE profits below £12,570</td><td>£3.65/week (£189.80/yr)</td><td>✅ Yes — if you elect to pay</td></tr>
+      <tr><td class="hl">Class 2</td><td>Self-employed profits > £7,105 (Small Profits Threshold)</td><td class="hl">£3.65/week (£189.80/yr) — treated as paid</td><td class="hl">✅ Yes — qualifies for state pension</td></tr>
+      <tr><td>Class 4</td><td>Self-employed profits > £12,570 (Lower Profits Limit)</td><td>6% on profits £12,570–£50,270, 2% above</td><td>❌ No — tax only, no pension benefit</td></tr>
+      <tr><td>Voluntary Class 2</td><td>SE profits below £7,105</td><td>£3.65/week (£189.80/yr)</td><td>✅ Yes — if you elect to pay</td></tr>
       <tr><td>Voluntary Class 3</td><td>Non-working gaps (employees)</td><td>£956.80/year</td><td>✅ Yes — but much more expensive</td></tr>
     </tbody>
   </table>
@@ -241,8 +244,8 @@
     <thead><tr><th>Action</th><th>Why It Matters</th></tr></thead>
     <tbody>
       <tr><td>✅ Check NI record annually at gov.uk</td><td>Self Assessment sometimes delays NI record update — catch errors early</td></tr>
-      <tr><td>✅ Confirm Class 2 on your Self Assessment</td><td>Class 2 is included automatically if profits > £12,570 — verify it appears</td></tr>
-      <tr><td>✅ If below £12,570, elect to pay voluntary Class 2</td><td>£189.80/yr is far cheaper than £956.80/yr Class 3 to fill the same gap later</td></tr>
+      <tr><td>✅ Confirm Class 2 on your Self Assessment</td><td>Class 2 is treated as paid automatically if profits > £7,105 (Small Profits Threshold) — verify it appears</td></tr>
+      <tr><td>✅ If below £7,105, elect to pay voluntary Class 2</td><td>£189.80/yr is far cheaper than £956.80/yr Class 3 to fill the same gap later</td></tr>
       <tr><td>✅ Check gap years — were you SE during them?</td><td>If yes, you may fill at Class 2 rate, not Class 3 — call HMRC to confirm</td></tr>
       <tr><td>⚠️ Don't assume profits = qualifying year</td><td>Below the Lower Profits Limit, the year does NOT automatically qualify</td></tr>
     </tbody>
@@ -268,11 +271,11 @@
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Does Class 4 NI count toward the state pension?</button>
-    <div class="faq-a">No. Class 4 NI (8% on profits between £12,570–£50,270) is a tax only — it does not build any state pension entitlement. Only Class 2 NI does.</div>
+    <div class="faq-a">No. Class 4 NI (6% on profits between the £12,570 Lower Profits Limit and £50,270 Upper Profits Limit, 2% above) is a tax only — it does not build any state pension entitlement. Only Class 2 NI does.</div>
   </div>
   <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">What if my profits are below £12,570?</button>
-    <div class="faq-a">That year does not automatically qualify. You can pay voluntary Class 2 at £3.65/week (£189.80/year) to protect your pension — still far cheaper than Class 3 at £956.80/year.</div>
+    <button class="faq-q" onclick="toggleFaq(this)">What if my profits are below £7,105?</button>
+    <div class="faq-a">That year's Class 2 is not treated as paid automatically, so it does not automatically qualify. You can pay voluntary Class 2 at £3.65/week (£189.80/year) to protect your pension — still far cheaper than Class 3 at £956.80/year.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I fill old SE gap years with Class 2 instead of Class 3?</button>
@@ -310,6 +313,7 @@
   <div class="container">
     <div class="fca-footer">Self-employed state pension guide — information only, not financial advice. Class 2 NI rate: £3.65/week (2026/27). Check your NI record at <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>.</div>
     <p>Self-employed state pension · <a href="/">Main Calculator</a> · <a href="/ni-gaps/">NI Gaps</a> · <a href="/voluntary-contributions/">Voluntary Contributions</a></p>
+    <p style="font-size:.72rem;margin-top:8px;color:#cbd5e1;font-weight:600;">Independent, open-source calculator — not affiliated with, endorsed by, or connected to HM Government, DWP, or gov.uk. Not to be confused with similarly-named third-party sites.</p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
 </footer>
