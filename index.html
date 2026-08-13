@@ -61,7 +61,7 @@
         },
         {
           "@type": "Question",
-          "name": "What is the triple lock guarantee on the state pension?",
+          "name": "What is the triple lock guarantee?",
           "acceptedAnswer": { "@type": "Answer", "text": "The triple lock guarantees the state pension rises each April by whichever is highest: inflation (CPI), average earnings growth, or 2.5%. This protects pensioners' purchasing power. The 2026/27 increase of 4.8% was based on earnings growth, raising the full pension to £241.30 per week." }
         },
         {
@@ -71,13 +71,28 @@
         },
         {
           "@type": "Question",
+          "name": "How much state pension will I get?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your state pension is based on your National Insurance record: weekly_pension = (qualifying NI years / 35) × £241.30, capped at 35 years. With the full 35 qualifying years you get £241.30/week (£12,548/year). With 20 years, for example, you'd get roughly £137.89/week. Enter your own date of birth and NI years into the calculator above for your exact figure, including your state pension age and retirement date." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much state pension will I get at 66?",
+          "acceptedAnswer": { "@type": "Answer", "text": "If your state pension age is 66, you'll start receiving your weekly amount from the date you turn 66 (or the next scheduled payment date after). The amount itself doesn't depend on your age at claim — it depends on your qualifying National Insurance years: (NI years / 35) × £241.30, up to the full £241.30/week at 35+ years. Use the calculator above with your date of birth to confirm whether 66 is actually your state pension age — many people born after April 1960 have an age of 66-67, not exactly 66." }
+        },
+        {
+          "@type": "Question",
           "name": "How does the state pension affect my private pension?",
           "acceptedAnswer": { "@type": "Answer", "text": "The state pension is separate from workplace or private pensions and can be received alongside them. However, it counts as income for tax purposes. If your total income (state pension + private pension) exceeds the personal allowance (£12,570 for 2026/27), you will pay income tax on the excess. Pension consolidation services like PensionBee can help you manage private pensions alongside your state pension planning." }
         },
         {
           "@type": "Question",
-          "name": "How do I check my actual state pension forecast?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You can get your official state pension forecast from the government's Check your State Pension service at gov.uk using your Government Gateway login. This shows your NI record, qualifying years, and a personalised forecast. Our calculator provides an estimate — your official forecast from gov.uk is always the most accurate." }
+          "name": "How do I check my official state pension forecast?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Visit gov.uk/check-state-pension and log in with your Government Gateway credentials. This gives your NI record year by year, your current forecast, and how much you could get if you continue working to state pension age. Our British state pension calculator provides an estimate — the gov.uk forecast is personalised and always the most accurate." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the state pension count as taxable income?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The state pension counts as taxable income, though HMRC does not deduct tax from it automatically. If your total income (state pension + other pensions + earnings) exceeds the personal allowance (£12,570 for 2026/27), you will pay income tax on the excess — usually collected via PAYE on a private pension or via a self-assessment return." }
         }
       ]
     },
@@ -489,6 +504,14 @@
     <div class="faq-a">The full new UK state pension for 2026/27 is <strong>£241.30 per week</strong> (£12,548 per year). You need 35 qualifying National Insurance years for the full amount. With fewer qualifying years (minimum 10), the amount is proportionally reduced: each NI year adds £6.89/week.</div>
   </div>
   <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How much state pension will I get?</button>
+    <div class="faq-a">Your state pension is based on your National Insurance record: <strong>weekly amount = (qualifying NI years ÷ 35) × £241.30</strong>, capped at 35 years. With the full 35 qualifying years you get £241.30/week (£12,548/year). With 20 years, for example, you'd get roughly £137.89/week. Enter your own date of birth and NI years into the calculator above for your exact figure, including your state pension age and retirement date.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How much state pension will I get at 66?</button>
+    <div class="faq-a">If your state pension age is 66, you'll start receiving your weekly amount from the date you turn 66 (or the next scheduled payment date after). The amount itself doesn't depend on your age at claim — it depends on your qualifying National Insurance years: (NI years ÷ 35) × £241.30, up to the full £241.30/week at 35+ years. Use the calculator above with your date of birth to confirm whether 66 is actually your state pension age — many people born after April 1960 have an age of 66–67, not exactly 66.</div>
+  </div>
+  <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What is the state pension age in the UK?</button>
     <div class="faq-a">Currently <strong>66 for both men and women</strong>. It rises to 67 between 2026 and 2028 for those born between 6 April 1960 and 5 April 1977. A further rise to 68 has been proposed for those born from 6 April 1977 onwards, but this has not yet been confirmed in law. Use our state pension age calculator above to get your personal retirement date.</div>
   </div>
@@ -515,6 +538,10 @@
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Does the state pension count as taxable income?</button>
     <div class="faq-a">Yes. The state pension counts as <strong>taxable income</strong>, though HMRC does not deduct tax from it automatically. If your total income (state pension + other pensions + earnings) exceeds the personal allowance (£12,570 for 2026/27), you will pay income tax on the excess — usually collected via PAYE on a private pension or via a self-assessment return.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How does the state pension affect my private pension?</button>
+    <div class="faq-a">The state pension is separate from workplace or private pensions and can be received alongside them. However, it counts as income for tax purposes. If your total income (state pension + private pension) exceeds the personal allowance (£12,570 for 2026/27), you will pay income tax on the excess. Pension consolidation services like PensionBee can help you manage private pensions alongside your state pension planning.</div>
   </div>
 
   <h2 class="st">Embed This Calculator On Your Site</h2>
