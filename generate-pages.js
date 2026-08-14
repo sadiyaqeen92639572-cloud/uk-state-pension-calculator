@@ -4,7 +4,24 @@ const path = require('path');
 const FULL_PENSION_WEEKLY = 241.30;
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
+// Real DWP timetable: SPA rises 66→67 gradually for those born 6 Apr 1960 – 5 Mar 1961
+// (one extra month per birth-month in that band), flat 67 before/after that band until 1977+.
+// Source: gov.uk state pension age timetable.
+function spaForBirth(year, month) {
+  const cutoffStart = 1960 * 12 + 4; // 6 Apr 1960
+  const cutoffEnd = 1961 * 12 + 3;   // 6 Mar 1961 (flat 67 from here)
+  const ym = year * 12 + month;
+  if (ym < cutoffStart) return { years: 66, months: 0 };
+  if (ym >= cutoffEnd) {
+    if (year < 1977 || (year === 1977 && month < 4)) return { years: 67, months: 0 };
+    return { years: 68, months: 0 };
+  }
+  const idx = ym - cutoffStart; // 0..10
+  return { years: 66, months: idx + 1 };
+}
+
 function getSPA(year) {
+  // representative flat SPA for years where it doesn't vary by birth month
   if (year < 1960) return 66;
   if (year < 1977) return 67;
   return 68;
@@ -20,10 +37,34 @@ function calcPension(niYears) {
 }
 
 for (let year = 1955; year <= 1975; year++) {
+  // 1960 and 1961 straddle the graduated 66→67 band — SPA varies by birth month within the year
+  const isMixed = year === 1960 || year === 1961;
   const spa = getSPA(year);
   const retYear = getRetirementYear(year, spa);
   const now = new Date();
   const yearsLeft = retYear - now.getFullYear();
+
+  // min/max SPA actually reachable within this birth year, for accurate mixed-year copy
+  const fmtSPA = (b) => b.months ? `${b.years}y${b.months}m` : String(b.years);
+  const retDateFor = (month, b) => {
+    const totalMonths = (month - 1) + b.months;
+    return year + b.years + Math.floor(totalMonths / 12);
+  };
+  const allMonths = Array.from({ length: 12 }, (_, i) => spaForBirth(year, i + 1));
+  const minBand = allMonths.reduce((a, b) => (a.years * 12 + a.months) <= (b.years * 12 + b.months) ? a : b);
+  const maxBand = allMonths.reduce((a, b) => (a.years * 12 + a.months) >= (b.years * 12 + b.months) ? a : b);
+  const minRetYear = Math.min(...allMonths.map((b, i) => retDateFor(i + 1, b)));
+  const maxRetYear = Math.max(...allMonths.map((b, i) => retDateFor(i + 1, b)));
+
+  const spaLabel = isMixed ? `${fmtSPA(minBand)}–${fmtSPA(maxBand)}` : String(spa);
+  const retYearLabel = isMixed ? `${minRetYear}–${maxRetYear}` : String(retYear);
+  const yearsLeftNote = isMixed
+    ? `Your exact date depends on your birth month — use the calculator above for your precise state pension age and retirement date.`
+    : (yearsLeft > 0 ? `That is approximately ${yearsLeft} years from now.` : `You may already be eligible to claim.`);
+  const yearsLeftNoteAlt = isMixed
+    ? `This depends on your exact birth month — use the calculator above for your precise date.`
+    : (yearsLeft > 0 ? `That means you have approximately ${yearsLeft} years until retirement.` : `You may already be eligible to claim — check your entitlement at gov.uk.`);
+
   const pension35 = FULL_PENSION_WEEKLY.toFixed(2);
   const pension30 = calcPension(30).toFixed(2);
   const pension20 = calcPension(20).toFixed(2);
@@ -35,13 +76,13 @@ for (let year = 1955; year <= 1975; year++) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>State Pension Age Calculator Born ${year} — When Will I Get My UK State Pension?</title>
-<meta name="description" content="Born in ${year}? Your UK state pension age is ${spa}. You will reach state pension age in ${retYear}. Calculate your exact retirement date and estimated weekly pension amount. Free.">
+<meta name="description" content="Born in ${year}? Your UK state pension age is ${spaLabel}. You will reach state pension age in ${retYearLabel}. Calculate your exact retirement date and estimated weekly pension amount. Free.">
 <meta name="keywords" content="state pension age calculator born ${year}, when will i get my state pension born ${year}, uk state pension ${year} birth year, british state pension born ${year}, state pension age ${year}">
 <link rel="canonical" href="https://state-pension-calculator.co.uk/born-${year}/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.png" type="image/png">
 <meta property="og:title" content="State Pension Age for People Born in ${year} — UK Calculator">
-<meta property="og:description" content="Born in ${year}: your state pension age is ${spa}, retirement from ${retYear}. Calculate your estimated weekly pension based on your NI years.">
+<meta property="og:description" content="Born in ${year}: your state pension age is ${spaLabel}, retirement from ${retYearLabel}. Calculate your estimated weekly pension based on your NI years.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://state-pension-calculator.co.uk/born-${year}/">
 <meta property="og:image" content="https://state-pension-calculator.co.uk/og-image.svg">
@@ -67,7 +108,7 @@ for (let year = 1955; year <= 1975; year++) {
         {
           "@type": "Question",
           "name": "What is the state pension age if I was born in ${year}?",
-          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in ${year}, your UK state pension age is ${spa}. You will be able to claim your state pension from ${retYear}. ${yearsLeft > 0 ? 'That is approximately ' + yearsLeft + ' years from now.' : 'You may already be eligible to claim.'}" }
+          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in ${year}, your UK state pension age is ${spaLabel}. You will be able to claim your state pension from ${retYearLabel}. ${yearsLeftNote}" }
         },
         {
           "@type": "Question",
@@ -77,7 +118,7 @@ for (let year = 1955; year <= 1975; year++) {
         {
           "@type": "Question",
           "name": "When exactly will I reach state pension age if born in ${year}?",
-          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in ${year}, you will reach state pension age (${spa}) in ${retYear}. Your exact retirement date depends on your specific birth month. Use our calculator above to get your precise retirement date based on your birth month." }
+          "acceptedAnswer": { "@type": "Answer", "text": "If you were born in ${year}, you will reach state pension age (${spaLabel}) in ${retYearLabel}. Your exact retirement date depends on your specific birth month. Use our calculator above to get your precise retirement date based on your birth month." }
         }
       ]
     },
@@ -175,9 +216,9 @@ for (let year = 1955; year <= 1975; year++) {
 
 <header>
   <div class="container">
-    <div class="badge">🇬🇧 Born ${year} · State Pension Age: ${spa}</div>
+    <div class="badge">🇬🇧 Born ${year} · State Pension Age: ${spaLabel}</div>
     <h1>State Pension Age Calculator — Born in ${year}</h1>
-    <p>If you were born in ${year}, your UK state pension age is <strong>${spa}</strong>. You can claim from <strong>${retYear}</strong>. Enter your NI years below to estimate your weekly amount.</p>
+    <p>If you were born in ${year}, your UK state pension age is <strong>${spaLabel}</strong>. You can claim from <strong>${retYearLabel}</strong>. Enter your NI years below to estimate your weekly amount.</p>
   </div>
 </header>
 
@@ -186,8 +227,8 @@ for (let year = 1955; year <= 1975; year++) {
   <div class="tool-card">
 
     <div class="summary-grid">
-      <div class="s-stat"><div class="sv">${spa}</div><div class="sl">State Pension Age</div></div>
-      <div class="s-stat"><div class="sv">${retYear}</div><div class="sl">Earliest Claim Year</div></div>
+      <div class="s-stat"><div class="sv">${spaLabel}</div><div class="sl">State Pension Age</div></div>
+      <div class="s-stat"><div class="sv">${retYearLabel}</div><div class="sl">Earliest Claim Year</div></div>
       <div class="s-stat"><div class="sv">${yearsLeft > 0 ? yearsLeft + ' yrs' : 'Now'}</div><div class="sl">${yearsLeft > 0 ? 'Years to go' : 'Already eligible'}</div></div>
     </div>
 
@@ -232,9 +273,9 @@ for (let year = 1955; year <= 1975; year++) {
   <a href="/" class="back-link">← Back to main calculator</a>
 
   <h2>State Pension Facts for People Born in ${year}</h2>
-  <p>If you were born in ${year}, you fall into the <strong>state pension age ${spa}</strong> cohort. The earliest you can claim your state pension is in <strong>${retYear}</strong>. ${yearsLeft > 0 ? `That means you have approximately ${yearsLeft} years until retirement.` : `You may already be eligible to claim — check your entitlement at gov.uk.`}</p>
+  <p>If you were born in ${year}, you fall into the <strong>state pension age ${spaLabel}</strong> cohort. The earliest you can claim your state pension is in <strong>${retYearLabel}</strong>. ${yearsLeftNoteAlt}</p>
 
-  <p>To receive the <strong>full new state pension of £${pension35} per week</strong>, you need 35 qualifying National Insurance years. If you started work at 21, by ${retYear} you would have accumulated ${retYear - year - 21} potential qualifying years (assuming no gaps).</p>
+  <p>To receive the <strong>full new state pension of £${pension35} per week</strong>, you need 35 qualifying National Insurance years. If you started work at 21, by ${maxRetYear} you would have accumulated ${maxRetYear - year - 21} potential qualifying years (assuming no gaps).</p>
 
   <table class="data-table">
     <thead><tr><th>NI Years</th><th>Weekly Pension</th><th>Annual Pension</th><th>vs Full Pension</th></tr></thead>
@@ -263,7 +304,7 @@ for (let year = 1955; year <= 1975; year++) {
   <h2>Frequently Asked Questions — Born in ${year}</h2>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What is the state pension age if I was born in ${year}?</button>
-    <div class="faq-a">If you were born in ${year}, your UK state pension age is <strong>${spa}</strong>. You can claim your state pension from <strong>${retYear}</strong>. Your exact date depends on your specific birth month — use the calculator above to find your precise retirement date.</div>
+    <div class="faq-a">If you were born in ${year}, your UK state pension age is <strong>${spaLabel}</strong>. You can claim your state pension from <strong>${retYearLabel}</strong>. Your exact date depends on your specific birth month — use the calculator above to find your precise retirement date.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">How much state pension will I get if born in ${year}?</button>
@@ -308,12 +349,26 @@ for (let year = 1955; year <= 1975; year++) {
 <script>
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+// Real DWP timetable: SPA rises 66→67 gradually for those born 6 Apr 1960 – 5 Mar 1961.
+function spaForBirth(year, month) {
+  const cutoffStart = 1960 * 12 + 4;
+  const cutoffEnd = 1961 * 12 + 3;
+  const ym = year * 12 + month;
+  if (ym < cutoffStart) return { years: 66, months: 0 };
+  if (ym >= cutoffEnd) {
+    if (year < 1977 || (year === 1977 && month < 4)) return { years: 67, months: 0 };
+    return { years: 68, months: 0 };
+  }
+  return { years: 66, months: (ym - cutoffStart) + 1 };
+}
+
 function calculate() {
   const birthMonth = parseInt(document.getElementById('birthMonth').value);
   const niYears = parseInt(document.getElementById('niNum').value) || 0;
-  const spa = ${spa};
-  const retYear = ${year} + spa;
-  const retDate = MONTHS[birthMonth-1] + ' ' + retYear;
+  const spa = spaForBirth(${year}, birthMonth);
+  const totalMonths = (birthMonth - 1) + spa.months;
+  const retYear = ${year} + spa.years + Math.floor(totalMonths / 12);
+  const retDate = MONTHS[totalMonths % 12] + ' ' + retYear;
   const pension = niYears < 10 ? 0 : Math.min(niYears, 35) / 35 * 241.30;
   const monthly = pension * 52 / 12;
   const annual = pension * 52;
@@ -337,7 +392,7 @@ function toggleFaq(btn) {
   const dir = path.join(__dirname, slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html);
-  console.log(`✅ Generated: ${slug}/ (SPA: ${spa}, Retirement: ${retYear})`);
+  console.log(`✅ Generated: ${slug}/ (SPA: ${spaLabel}, Retirement: ${retYearLabel})`);
 }
 
 console.log('\nDone — 21 pages generated.');

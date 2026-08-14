@@ -277,12 +277,26 @@
 <script>
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+// Real DWP timetable: SPA rises 66→67 gradually for those born 6 Apr 1960 – 5 Mar 1961.
+function spaForBirth(year, month) {
+  const cutoffStart = 1960 * 12 + 4;
+  const cutoffEnd = 1961 * 12 + 3;
+  const ym = year * 12 + month;
+  if (ym < cutoffStart) return { years: 66, months: 0 };
+  if (ym >= cutoffEnd) {
+    if (year < 1977 || (year === 1977 && month < 4)) return { years: 67, months: 0 };
+    return { years: 68, months: 0 };
+  }
+  return { years: 66, months: (ym - cutoffStart) + 1 };
+}
+
 function calculate() {
   const birthMonth = parseInt(document.getElementById('birthMonth').value);
   const niYears = parseInt(document.getElementById('niNum').value) || 0;
-  const spa = 66;
-  const retYear = 1959 + spa;
-  const retDate = MONTHS[birthMonth-1] + ' ' + retYear;
+  const spa = spaForBirth(1959, birthMonth);
+  const totalMonths = (birthMonth - 1) + spa.months;
+  const retYear = 1959 + spa.years + Math.floor(totalMonths / 12);
+  const retDate = MONTHS[totalMonths % 12] + ' ' + retYear;
   const pension = niYears < 10 ? 0 : Math.min(niYears, 35) / 35 * 241.30;
   const monthly = pension * 52 / 12;
   const annual = pension * 52;

@@ -352,6 +352,10 @@
     </tbody>
   </table>
 
+  <h2 class="st">How Much State Pension Will I Get at 66?</h2>
+  <p>Your state pension amount doesn't depend on the age you claim it — it depends only on your qualifying National Insurance years: <strong>weekly amount = (NI years ÷ 35) × £241.30</strong>, up to the full £241.30/week at 35+ years. So "how much will I get at 66" and "how much will I get at 67" have the same answer for the same NI record — what changes by birth year is <em>when</em> you're allowed to start claiming, not the amount. Most people born after April 1960 actually have a state pension age of 66–67 or 67, not exactly 66 — check the table below or enter your date of birth in the calculator above to confirm your real state pension age before you plan around a specific number.</p>
+  <p>Quick answers for common NI year counts: with 20 years you'd get roughly £137.89/week (£7,170/year); with 30 years, £206.83/week (£10,755/year); with the full 35 years, £241.30/week (£12,548/year). Not sure how many qualifying years you have? Your real figure is on your <a href="/state-pension-forecast/">official gov.uk forecast</a> — this calculator estimates from whatever NI year count you enter above.</p>
+
   <h2 class="st">State Pension Age by Birth Year</h2>
   <p>The state pension age depends entirely on when you were born. It is currently 66 and rising to 67 (2026–2028) and 68 (proposed 2044–2046).</p>
 
@@ -634,30 +638,46 @@ for (let y = 1944; y <= 1979; y++) {
 // Birth year grid links
 const bornGrid = document.getElementById('born-grid');
 for (let y = 1955; y <= 1975; y++) {
-  const spa = getSPA(y, 6);
+  const isMixed = y === 1960 || y === 1961;
+  const spaLabel = isMixed ? '66–67 (varies)' : spaForBirth(y, 6).years;
   const div = document.createElement('a');
   div.href = `/born-${y}/`;
   div.className = 'born-link';
-  div.innerHTML = `Born ${y}<div class="spa">State pension age: ${spa}</div>`;
+  div.innerHTML = `Born ${y}<div class="spa">State pension age: ${spaLabel}</div>`;
   bornGrid.appendChild(div);
 }
 
 // ─── FUNCTIONS ──────────────────────────────────────────────
-function getSPA(year, month) {
-  if (year < 1960 || (year === 1960 && month < 4)) return 66;
-  if (year < 1977 || (year === 1977 && month < 4)) return 67;
-  return 68;
+// Real DWP timetable: SPA rises 66→67 gradually for those born 6 Apr 1960 – 5 Mar 1961
+// (one extra month per birth-month in that band), flat before/after. Source: gov.uk SPA timetable.
+function spaForBirth(year, month) {
+  const cutoffStart = 1960 * 12 + 4; // 6 Apr 1960
+  const cutoffEnd = 1961 * 12 + 3;   // 6 Mar 1961 (flat 67 from here)
+  const ym = year * 12 + month;
+  if (ym < cutoffStart) return { years: 66, months: 0 };
+  if (ym >= cutoffEnd) {
+    if (year < 1977 || (year === 1977 && month < 4)) return { years: 67, months: 0 };
+    return { years: 68, months: 0 };
+  }
+  return { years: 66, months: (ym - cutoffStart) + 1 };
+}
+
+function fmtSPA(spa) {
+  return spa.months ? `${spa.years}y ${spa.months}m` : String(spa.years);
 }
 
 function getRetirementDate(birthYear, birthMonth, spa) {
-  const retYear = birthYear + spa;
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${months[birthMonth - 1]} ${retYear}`;
+  const totalMonths = (birthMonth - 1) + spa.months;
+  const retYear = birthYear + spa.years + Math.floor(totalMonths / 12);
+  return `${months[totalMonths % 12]} ${retYear}`;
 }
 
 function yearsUntilRetirement(birthYear, birthMonth, spa) {
   const now = new Date();
-  const retDate = new Date(birthYear + spa, birthMonth - 1);
+  const totalMonths = (birthMonth - 1) + spa.months;
+  const retYear = birthYear + spa.years + Math.floor(totalMonths / 12);
+  const retDate = new Date(retYear, totalMonths % 12);
   const diff = (retDate - now) / (1000 * 60 * 60 * 24 * 365.25);
   return diff;
 }
@@ -673,7 +693,7 @@ function calculate() {
 
   if (!birthYear) { alert('Please select your birth year.'); return; }
 
-  const spa = getSPA(birthYear, birthMonth);
+  const spa = spaForBirth(birthYear, birthMonth);
   const pension = niYears < MIN_YEARS ? 0 : Math.min(niYears, YEARS_FOR_FULL) / YEARS_FOR_FULL * FULL_PENSION_WEEKLY;
   const monthly = pension * 52 / 12;
   const annual = pension * 52;
@@ -689,7 +709,7 @@ function calculate() {
 
   document.getElementById('r-monthly').textContent = niYears < MIN_YEARS ? '£0' : fmtGBP(monthly);
   document.getElementById('r-annual').textContent = niYears < MIN_YEARS ? '£0' : '£' + Math.round(annual).toLocaleString();
-  document.getElementById('r-spa').textContent = spa;
+  document.getElementById('r-spa').textContent = fmtSPA(spa);
   document.getElementById('r-date').textContent = retDate;
   document.getElementById('r-years-left').textContent = yearsLeft > 0 ? yearsLeft.toFixed(1) + ' yrs' : 'Reached';
   document.getElementById('r-missing').textContent = missing > 0 ? missing + ' years' : '✅ Full';
