@@ -31,12 +31,22 @@ function getRetirementYear(birthYear, spa) {
   return birthYear + spa;
 }
 
+// GSC gap fix (2026-08-15): born-1966 page-queries showed a real cluster at pos 6-8, 0% CTR, for
+// "born 1966 when can i retire" phrasing (~128 impr/90d combined) — the old title/meta never used the
+// word "retire". Only 1966 has verified GSC evidence; other years share the same query *shape* but are
+// unverified, so this is a phased rollout with 1965/1967 held out as directional controls (not a
+// powered A/B — search intensity isn't symmetric across cohorts approaching different SPA dates).
+// Remove this branch and apply the new title to all years after the 2026-11-15 measurement window
+// (needs ~2-3 months of accumulated impressions at ~40-45/month to read CTR; don't read results earlier).
+const TREATED_YEARS = [1966];
+
 function calcPension(niYears) {
   if (niYears < 10) return 0;
   return Math.min(niYears, 35) / 35 * FULL_PENSION_WEEKLY;
 }
 
 for (let year = 1955; year <= 1975; year++) {
+  const isTreated = TREATED_YEARS.includes(year);
   // 1960 and 1961 straddle the graduated 66→67 band — SPA varies by birth month within the year
   const isMixed = year === 1960 || year === 1961;
   const spa = getSPA(year);
@@ -75,9 +85,9 @@ for (let year = 1955; year <= 1975; year++) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>State Pension Age Calculator Born ${year} — When Will I Get My UK State Pension?</title>
-<meta name="description" content="Born in ${year}? Your UK state pension age is ${spaLabel}. You will reach state pension age in ${retYearLabel}. Calculate your exact retirement date and estimated weekly pension amount. Free.">
-<meta name="keywords" content="state pension age calculator born ${year}, when will i get my state pension born ${year}, uk state pension ${year} birth year, british state pension born ${year}, state pension age ${year}">
+<title>${isTreated ? `Born in ${year}? When Can I Retire | UK State Pension Age` : `State Pension Age Calculator Born ${year} — When Will I Get My UK State Pension?`}</title>
+<meta name="description" content="${isTreated ? `Born in ${year}, your UK State Pension age is ${spaLabel} — you can claim from ${retYearLabel}. Calculate your exact date and weekly amount.` : `Born in ${year}? Your UK state pension age is ${spaLabel}. You will reach state pension age in ${retYearLabel}. Calculate your exact retirement date and estimated weekly pension amount. Free.`}">
+<meta name="keywords" content="state pension age calculator born ${year}, when will i get my state pension born ${year}, uk state pension ${year} birth year, british state pension born ${year}, state pension age ${year}${isTreated ? `, born ${year} when can i retire` : ''}">
 <link rel="canonical" href="https://state-pension-calculator.co.uk/born-${year}/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.png" type="image/png">
