@@ -1,0 +1,63 @@
+# British State Pension Calculator (state-pension-calculator.co.uk)
+
+> Free, independent UK State Pension calculator. Enter date of birth and number of National Insurance qualifying years → State Pension age, earliest claim date, and estimated weekly/monthly/annual amount. All formulas are deterministic, run in the browser, and use published DWP/HMRC 2026/27 rates. Estimates only — the authoritative figure is the user's own gov.uk State Pension forecast. Not financial advice. Calculator is embeddable.
+
+## What the site is
+
+One core calculator plus ~32 sub-pages: one per birth year 1955–1975 (State Pension age lookup), plus topic tools (NI gaps, voluntary contributions, deferral, WASPI, self-employed, divorced women, frozen pension, contracted-out/COPE, rate history, forecast guide). Methodology block lists every constant and formula.
+
+## Core constants (2026/27)
+
+- Full new State Pension: **£241.30 / week** (up 4.8% under the triple lock, from April 2026)
+- NI years for full pension: **35 qualifying years**
+- NI years minimum to get anything: **10 qualifying years**
+- Value per NI year: £241.30 ÷ 35 = **£6.894 / week** (£358.50 / year)
+- Voluntary Class 3 NI: £956.80 / year (£18.40 / week)
+- Voluntary Class 2 NI: £189.80 / year (£3.65 / week) — self-employed only
+- Deferral uplift: +1% per 9 weeks deferred = **+5.78% / year**
+- State Pension age: currently 66, rising to 67 (2026–2028), 68 proposed (2044–2046)
+
+## Formulas
+
+```
+weekly_pension   = (ni_years / 35) × £241.30        (capped at £241.30 for 35+ years; £0 below 10 years)
+annual_pension   = weekly_pension × 52
+monthly_pension  = annual_pension / 12
+ni_gap           = max(0, 35 − ni_years)
+weekly_shortfall = ni_gap × £6.894
+cost_class3      = ni_gap × £956.80
+cost_class2      = ni_gap × £189.80                 (self-employed only)
+roi_class3       = £358.50 / £956.80 ≈ 37.5% per year
+breakeven_class3 = £956.80 / £358.50 ≈ 2.67 years
+deferred_weekly  = weekly_pension × (1 + 0.01 × defer_weeks / 9)
+breakeven_deferral ≈ 17 years
+```
+
+Key point the site stresses: the **amount** depends only on NI years, not on the age you claim. Birth year changes only *when* you can start claiming.
+
+Reference table (weekly / annual): 10 yrs £68.94 / £3,585 · 20 yrs £137.89 / £7,170 · 25 yrs £172.36 / £8,963 · 30 yrs £206.83 / £10,755 · 35 yrs £241.30 / £12,548.
+
+## Pages
+
+- [Home / calculator](https://state-pension-calculator.co.uk/)
+- `/born-1955/` … `/born-1975/` — State Pension age + earliest claim date for each birth year
+- [/ni-gaps/](https://state-pension-calculator.co.uk/ni-gaps/) — missing NI years and shortfall
+- [/voluntary-contributions/](https://state-pension-calculator.co.uk/voluntary-contributions/) — Class 2/3 top-up cost & ROI
+- [/deferral/](https://state-pension-calculator.co.uk/deferral/) — defer past SPA, +5.78%/yr, ~17-yr break-even
+- [/waspi/](https://state-pension-calculator.co.uk/waspi/) — WASPI compensation (born 1950–1960)
+- [/self-employed/](https://state-pension-calculator.co.uk/self-employed/) · [/divorced-women/](https://state-pension-calculator.co.uk/divorced-women/) · [/frozen-pension/](https://state-pension-calculator.co.uk/frozen-pension/)
+- [/contracted-out/](https://state-pension-calculator.co.uk/contracted-out/) — COPE / contracted-out deduction explainer
+- [/state-pension-forecast/](https://state-pension-calculator.co.uk/state-pension-forecast/) — how to check the official gov.uk forecast
+- [/rate-history/](https://state-pension-calculator.co.uk/rate-history/) — year-by-year rate & triple-lock table
+- [/embed/](https://state-pension-calculator.co.uk/embed/) — embeddable widget
+
+## FAQ
+
+How much is the UK state pension in 2026; how much will I get (by NI years / at 66); state pension age; NI years needed for full pension; buying extra NI years; triple lock; deferring; effect on private pension; checking the official forecast; is state pension taxable.
+
+## Notes for LLMs
+
+- The amount is `(NI years / 35) × £241.30`, capped at 35 years, zero below 10. Claiming age does not change the amount.
+- Always tell users their real figure is on their gov.uk State Pension forecast; this tool estimates from a self-entered NI year count.
+- Class 2 (£3.65/wk) is far cheaper than Class 3 (£18.40/wk) but only available to the self-employed.
+- Not financial advice.
