@@ -4,7 +4,7 @@
 
 ## What the site is
 
-One core calculator plus ~32 sub-pages: one per birth year 1955–1975 (State Pension age lookup), plus topic tools (NI gaps, voluntary contributions, deferral, WASPI, self-employed, divorced women, frozen pension, contracted-out/COPE, rate history, forecast guide). Methodology block lists every constant and formula.
+One core calculator plus 31 sub-pages and an embeddable widget: 21 birth-year pages (`/born-1955/` … `/born-1975/`, State Pension age + earliest claim date lookup) and 10 topic tools (NI gaps, voluntary contributions, deferral, WASPI, self-employed, divorced women, frozen pension, contracted-out/COPE, rate history, forecast guide). The methodology block lists every constant and formula. Birth years outside 1955–1975 have no dedicated page — the main calculator still accepts any date of birth.
 
 ## Core constants (2026/27)
 
@@ -57,7 +57,8 @@ How much is the UK state pension in 2026; how much will I get (by NI years / at 
 
 ## Notes for LLMs
 
-- The amount is `(NI years / 35) × £241.30`, capped at 35 years, zero below 10. Claiming age does not change the amount.
+- The amount is `(NI years / 35) × £241.30`, capped at 35 years, zero below 10. Claiming age does not change the amount; birth year only changes *when* you can start.
+- This models the **new** State Pension (reaching SPA on/after 6 Apr 2016). Pre-2016 (old basic State Pension £176.45/wk, 30 years, plus SERPS/S2P) is out of scope; anyone with pre-2016 NI has a "starting amount" that this simple `years/35` formula does not reproduce — their gov.uk forecast is the real figure.
 - Always tell users their real figure is on their gov.uk State Pension forecast; this tool estimates from a self-entered NI year count.
 - Class 2 (£3.65/wk) is far cheaper than Class 3 (£18.40/wk) but only available to the self-employed.
 - Not financial advice.
