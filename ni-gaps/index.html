@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UK National Insurance Gaps Calculator 2026 — Should I Fill My NI Gaps?</title>
 <meta name="description" content="Calculate the cost of filling your National Insurance gaps and whether it's worth it. Enter your NI gaps → see exact cost, pension boost, and break-even point. Free NI gaps calculator 2026.">
-<meta name="keywords" content="NI gaps calculator, national insurance gaps calculator, fill NI gaps, should I fill my NI gaps, buy NI years, voluntary NI contributions calculator, Class 3 NI contributions cost">
+<meta name="keywords" content="NI gaps calculator, national insurance gaps calculator, check NI record gaps, how many NI gap years, fill NI gaps, should I fill my NI gaps, missing NI years">
 <link rel="canonical" href="https://state-pension-calculator.co.uk/ni-gaps/">
 <meta property="og:title" content="NI Gaps Calculator UK 2026 — Is It Worth Filling Your National Insurance Gaps?">
 <meta property="og:description" content="Enter how many NI gaps you have → get exact cost (£956.80/year), annual pension boost, and break-even point. Most gaps pay off in under 3 years of retirement.">
@@ -56,13 +56,23 @@
         },
         {
           "@type": "Question",
-          "name": "What is the deadline for filling NI gaps?",
+          "name": "What is the deadline for filling old NI gaps?",
           "acceptedAnswer": { "@type": "Answer", "text": "You can normally fill gaps from the last 6 years. For gaps between April 2006 and April 2016, the government has repeatedly extended a special deadline — check gov.uk for the current confirmed date, as this changes. Gaps older than the current deadline cannot be filled with voluntary contributions." }
         },
         {
           "@type": "Question",
           "name": "Can I fill NI gaps if I live abroad?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. British citizens living abroad can pay Class 2 or Class 3 voluntary NI contributions to protect their UK state pension entitlement. Class 2 (for those who worked in the UK before leaving) costs significantly less than Class 3 — check gov.uk/voluntary-national-insurance-contributions for eligibility and rates." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. UK citizens living abroad can pay Class 2 or Class 3 voluntary NI contributions to protect their UK state pension entitlement. Class 2 (for those who worked in the UK before leaving) costs significantly less than Class 3 — check gov.uk/voluntary-national-insurance-contributions for eligibility and rates." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I fill NI gaps if I'm already retired?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Once you reach state pension age and start claiming, you can no longer pay voluntary NI contributions. The decision to fill gaps must be made before you reach your state pension age, so if you are approaching it, check your NI record urgently." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I qualify for NI credits instead?",
+          "acceptedAnswer": { "@type": "Answer", "text": "NI credits are free qualifying years awarded for circumstances such as child benefit (children under 12), carer's allowance, and unemployment benefits (JSA/ESA). Check whether you already hold credits for your gap years before paying voluntary contributions — those years may already be covered." }
         },
         {
           "@type": "Question",
@@ -243,11 +253,15 @@
 </div>
 
 <div class="content">
-  <a href="/" class="back-link">← British State Pension Calculator</a>
+  <a href="/" class="back-link">← UK State Pension Calculator</a>
 
   <div class="highlight-box">
     <strong>Key figures for 2026/27:</strong> Class 3 voluntary NI = <strong>£956.80/year</strong> to fill. Each year adds <strong>£6.89/week = £358.50/year</strong> to your pension for life. Break-even: <strong>~2.7 years</strong> of retirement.
   </div>
+
+  <h2>How to check your NI record and count your gaps</h2>
+  <p>Before deciding whether to buy any years, log in to your NI record at <a href="https://www.gov.uk/check-state-pension" target="_blank" rel="noopener">gov.uk/check-state-pension</a> with your Government Gateway ID. It lists every tax year since you started work, flags which are "full" and which have a gap, shows how many qualifying years you currently have, and gives the exact cost to fill each individual gap year. Count the flagged years — that number is what you enter in the calculator above.</p>
+  <p>No Government Gateway account? Call the HMRC Future Pension Centre on <strong>0800 731 0175</strong> and they can read your gap years and costs to you. Once you know which years to fill, the <a href="/voluntary-contributions/">voluntary contributions guide</a> covers Class 2 vs Class 3 rates and the payment deadline in detail.</p>
 
   <h2>NI Gap Fill Cost Table 2026/27</h2>
   <table class="data-table">
@@ -310,8 +324,16 @@
     <div class="faq-a">You can normally fill gaps from the last 6 tax years. A government deadline extended the window to fill gaps back to 2006/07 — check gov.uk for the current confirmed deadline. Use your Personal Tax Account at gov.uk to see exactly which years are fillable.</div>
   </div>
   <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How do I check my NI record and gaps?</button>
+    <div class="faq-a">Log in to your Personal Tax Account at gov.uk/check-state-pension with your Government Gateway ID. It shows your NI record year by year, marks which years are qualifying and which have a gap, gives how many qualifying years you currently have, and shows the exact cost to fill each gap. No account? Call the HMRC Future Pension Centre on 0800 731 0175.</div>
+  </div>
+  <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What is the deadline for filling old NI gaps?</button>
     <div class="faq-a">The special deadline for filling gaps back to April 2006 has been extended multiple times. Check gov.uk/voluntary-national-insurance-contributions for the current confirmed date. After this deadline, gaps from that period cannot be filled.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Can I fill NI gaps if I live abroad?</button>
+    <div class="faq-a">Yes. UK citizens living abroad can pay Class 2 or Class 3 voluntary NI to protect their state pension entitlement. Class 2 (if you worked in the UK before leaving) costs far less than Class 3 — check gov.uk/voluntary-national-insurance-contributions for eligibility and rates.</div>
   </div>
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">Can I fill NI gaps if I'm already retired?</button>
@@ -320,6 +342,10 @@
   <div class="faq-item">
     <button class="faq-q" onclick="toggleFaq(this)">What if I qualify for NI credits instead?</button>
     <div class="faq-a">NI credits are free qualifying years awarded for certain circumstances: child benefit (for children under 12), carer's allowance, unemployment benefits (JSA/ESA), and others. Check if you already have credits for gap years before paying voluntary contributions — you may already have those years covered.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Does filling NI gaps affect my tax?</button>
+    <div class="faq-a">Voluntary NI contributions are not tax-deductible, but the extra pension income they buy is taxable once your total income exceeds the personal allowance (£12,570 for 2026/27). For most people it is still worthwhile — the net after-tax return is typically several times the initial cost over a 20-year retirement.</div>
   </div>
 </div>
 </div>
@@ -348,7 +374,7 @@
 <footer>
   <div class="container">
     <div class="fca-footer">This tool provides information only — not financial advice. Class 3 NI rate shown is 2026/27. For personalised advice, consult an FCA-authorised financial adviser. Check your NI record at <a href="https://www.gov.uk/check-state-pension">gov.uk/check-state-pension</a>.</div>
-    <p>NI gaps calculator 2026 · <a href="/">British State Pension Calculator</a> · <a href="/state-pension-forecast/">State Pension Forecast</a> · <a href="/voluntary-contributions/">Voluntary Contributions Guide</a></p>
+    <p>NI gaps calculator 2026 · <a href="/">UK State Pension Calculator</a> · <a href="/state-pension-forecast/">State Pension Forecast</a> · <a href="/voluntary-contributions/">Voluntary Contributions Guide</a></p>
     <p style="font-size:.72rem;margin-top:8px;color:#cbd5e1;font-weight:600;">Independent, open-source calculator — not affiliated with, endorsed by, or connected to HM Government, DWP, or gov.uk. Not to be confused with similarly-named third-party sites.</p>
     <p style="font-size:.72rem;margin-top:8px;">State Pension calculator is part of Gesmine-Invest Limited, registered UK company number 14120136, registered office address at Hardy House, 269 Poynders Gardens, London, London, United Kingdom, SW4 8PQ.</p>
   </div>
